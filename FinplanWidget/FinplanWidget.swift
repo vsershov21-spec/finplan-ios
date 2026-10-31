@@ -12,9 +12,57 @@ struct FinProvider: TimelineProvider {
         completion(FinEntry(date: Date(), snap: context.isPreview ? (SharedStore.load() ?? .sample) : SharedStore.load()))
     }
     func getTimeline(in context: Context, completion: @escaping (Timeline<FinEntry>) -> Void) {
-        // данные приходят из приложения; раз в час перерисовываем «обновлено …»
-        let e = FinEntry(date: Date(), snap: SharedStore.load())
-        completion(Timeline(entries: [e], policy: .after(Date().addingTimeInterval(3600))))
+        // данные приходят из приложения; Кузьма меняет настроение сам: в обычное время записей, вечером и когда давно не заходили
+        let snap = SharedStore.load(), now = Date(), cal = Calendar.current
+        var dates: [Date] = [now]
+        if let s = snap {
+            if let at = s.nudgeAt, let t = Kuzya.minutes(at), let d = cal.date(bySettingHour: t / 60, minute: t % 60, second: 0, of: now), d > now { dates.append(d) }
+            if let d = cal.date(bySettingHour: 21, minute: 0, second: 0, of: now), d > now { dates.append(d) }
+            if let d = cal.date(byAdding: .day, value: 1, to: cal.startOfDay(for: now)) { dates.append(d) }
+            let upd = Date(timeIntervalSince1970: s.updated)
+            for days in [3, 7] { if let d = cal.date(byAdding: .day, value: days, to: upd), d > now { dates.append(d) } }
+        }
+        let entries = dates.sorted().map { FinEntry(date: $0, snap: snap) }
+        completion(Timeline(entries: entries, policy: .after(now.addingTimeInterval(3 * 3600))))
+    }
+}
+
+// MARK: - Кузьма
+
+enum Kuzya {
+    static func minutes(_ hhmm: String) -> Int? {
+        let p = hhmm.split(separator: ":"); guard p.count == 2, let h = Int(p[0]), let m = Int(p[1]) else { return nil }; return h * 60 + m
+    }
+    /// Настроение и строка на момент `date`: приложение могло давно не открываться, поэтому считаем сами.
+    static func state(_ s: FinSnapshot, at date: Date) -> (mood: String, text: String) {
+        let cal = Calendar.current, upd = Date(timeIntervalSince1970: s.updated)
+        let idle = cal.dateComponents([.day], from: cal.startOfDay(for: upd), to: cal.startOfDay(for: date)).day ?? 0
+        let streak = s.streak ?? 0
+        let wroteToday = (s.today ?? false) && cal.isDate(upd, inSameDayAs: date)
+        let mins = cal.component(.hour, from: date) * 60 + cal.component(.minute, from: date)
+        if idle >= 7 { return ("angry", "Неделю не виделись. Цифры устарели") }
+        if idle >= 3 { return ("sleep", "Давно не виделись. Откройте, чтобы обновить") }
+        if (s.bank ?? 0) > 0 && idle == 0 { return ("please", "Из банка: \(s.bank!). Примите одним касанием") }
+        if !wroteToday && streak >= 3 && mins >= 21 * 60 { return ("worry", "Серия \(streak) \(days(streak)) сгорит в полночь") }
+        if !wroteToday, let at = s.nudgeAt, let t = minutes(at), mins >= t { return ("wait", "Что было сегодня? Запишите траты") }
+        if idle == 0, let m = s.kz, let t = s.kzText, ["ok", "party"].contains(m) { return (m, t) }
+        return ("ok", streak > 0 ? "Серия \(streak) \(days(streak))" : "Записывайте каждый день")
+    }
+    static func days(_ n: Int) -> String {
+        let a = n % 100, b = n % 10
+        if a > 10 && a < 20 { return "дней" }; if b == 1 { return "день" }; if b > 1 && b < 5 { return "дня" }; return "дней"
+    }
+}
+
+struct KuzyaBubble: View {
+    let mood: String
+    let text: String
+    var size: CGFloat = 44
+    var body: some View {
+        HStack(alignment: .center, spacing: 6) {
+            Image("Kuzya-\(mood)").resizable().scaledToFit().frame(width: size, height: size)
+            Text(text).font(.caption2.weight(.semibold)).lineLimit(2).minimumScaleFactor(0.85).fixedSize(horizontal: false, vertical: true)
+        }
     }
 }
 
@@ -82,12 +130,17 @@ struct EmptyStateView: View {
 
 struct SmallView: View {
     let s: FinSnapshot
+    let date: Date
     var body: some View {
+        let k = Kuzya.state(s, at: date), stale = ["sleep", "angry"].contains(k.mood)
         VStack(alignment: .leading, spacing: 4) {
             Header(snap: s)
             Spacer(minLength: 0)
             Text(Money.rub(s.balance)).font(.system(size: 26, weight: .bold, design: .rounded)).minimumScaleFactor(0.5).lineLimit(1)
-            if s.due > 0 {
+                .foregroundStyle(stale ? .secondary : .primary)
+            if k.mood != "ok" {
+                KuzyaBubble(mood: k.mood, text: k.text, size: 40)
+            } else if s.due > 0 {
                 Label(s.due == 1 ? "Пора оплатить" : "Оплатить: \(s.due)", systemImage: "exclamationmark.circle.fill")
                     .font(.caption.weight(.semibold)).foregroundStyle(Color.finWarn).lineLimit(1)
             } else if s.spendPlan > 0 {
@@ -100,13 +153,16 @@ struct SmallView: View {
 
 struct MediumView: View {
     let s: FinSnapshot
+    let date: Date
     var body: some View {
+        let k = Kuzya.state(s, at: date), stale = ["sleep", "angry"].contains(k.mood)
         HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
                 Header(snap: s)
                 Spacer(minLength: 0)
                 Text(Money.rub(s.balance)).font(.system(size: 28, weight: .bold, design: .rounded)).minimumScaleFactor(0.5).lineLimit(1)
-                Text("вместе \(Money.short(s.family)) · общее \(Money.short(s.shared))").font(.caption2).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.8)
+                    .foregroundStyle(stale ? .secondary : .primary)
+                KuzyaBubble(mood: k.mood, text: k.text, size: 46)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             VStack(alignment: .leading, spacing: 8) {
@@ -133,6 +189,15 @@ struct MediumView: View {
     }
 }
 
+private func widgetLink(_ e: FinEntry) -> String {
+    guard let s = e.snap else { return "finplan://home" }
+    switch Kuzya.state(s, at: e.date).mood {
+    case "please": return "finplan://bank"
+    case "wait", "worry": return "finplan://spend"
+    default: return s.due > 0 ? "finplan://plan" : "finplan://home"
+    }
+}
+
 struct FinWidgetView: View {
     @Environment(\.widgetFamily) var family
     let entry: FinEntry
@@ -146,7 +211,7 @@ struct FinWidgetView: View {
                     VStack(alignment: .leading, spacing: 1) {
                         Text("Финплан").font(.caption2.weight(.semibold))
                         Text(Money.rub(s.balance)).font(.headline).minimumScaleFactor(0.6).lineLimit(1)
-                        Text(s.due > 0 ? "пора оплатить: \(s.due)" : "траты \(Money.short(s.spent)) из \(Money.short(s.spendPlan))").font(.caption2).lineLimit(1)
+                        Text(Kuzya.state(s, at: entry.date).mood != "ok" ? Kuzya.state(s, at: entry.date).text : s.due > 0 ? "пора оплатить: \(s.due)" : "траты \(Money.short(s.spent)) из \(Money.short(s.spendPlan))").font(.caption2).lineLimit(1)
                     }
                 case .accessoryCircular:
                     Gauge(value: s.spendPlan > 0 ? min(1, s.spent / s.spendPlan) : 0) {
@@ -156,9 +221,9 @@ struct FinWidgetView: View {
                     }
                     .gaugeStyle(.accessoryCircularCapacity)
                 case .systemMedium:
-                    MediumView(s: s)
+                    MediumView(s: s, date: entry.date)
                 default:
-                    SmallView(s: s)
+                    SmallView(s: s, date: entry.date)
                 }
             } else {
                 if family == .accessoryInline || family == .accessoryRectangular || family == .accessoryCircular {
@@ -168,7 +233,7 @@ struct FinWidgetView: View {
                 }
             }
         }
-        .widgetURL(URL(string: (entry.snap?.due ?? 0) > 0 ? "finplan://plan" : "finplan://home"))
+        .widgetURL(URL(string: widgetLink(entry)))
         .containerBackground(for: .widget) { Color(UIColor.systemBackground) }
     }
 }
@@ -180,7 +245,7 @@ struct FinplanWidget: Widget {
             FinWidgetView(entry: entry)
         }
         .configurationDisplayName("Финплан")
-        .description("Ваши деньги, траты месяца и что пора оплатить.")
+        .description("Ваши деньги, траты месяца и Кузьма, который напомнит записать.")
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline, .accessoryCircular])
     }
 }

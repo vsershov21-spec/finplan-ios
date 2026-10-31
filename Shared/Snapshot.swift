@@ -20,9 +20,16 @@ struct FinSnapshot: Codable, Equatable {
     var next: Next? = nil
     var month: String = ""
     var updated: Double = 0
+    // Кузьма: настроение и строка из приложения, серия дней с записями
+    var kz: String? = nil
+    var kzText: String? = nil
+    var streak: Int? = nil
+    var today: Bool? = nil
+    var nudgeAt: String? = nil
+    var bank: Int? = nil
 
     static let sample = FinSnapshot(name: "Владимир", balance: 998_356, family: 1_360_000, shared: 867_000, spent: 24_869, spendPlan: 84_000,
-                                    got: 105_000, incomePlan: 499_000, due: 1, dueTitle: "Оплатить: Коммуналка", next: Next(name: "Сбер", amount: 142_000, date: "2026-11-05"), month: "ноябрь", updated: Date().timeIntervalSince1970)
+                                    got: 105_000, incomePlan: 499_000, due: 1, dueTitle: "Оплатить: Коммуналка", next: Next(name: "Сбер", amount: 142_000, date: "2026-11-05"), month: "ноябрь", updated: Date().timeIntervalSince1970, kz: "ok", kzText: "Серия 12 дней", streak: 12, today: true, nudgeAt: "21:30", bank: 0)
 }
 
 enum SharedStore {
