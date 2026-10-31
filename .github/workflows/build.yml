@@ -1,0 +1,44 @@
+name: Проверка сборки
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+jobs:
+  simulator:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode и XcodeGen
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.4.app 2>/dev/null || sudo xcode-select -s "$(ls -d /Applications/Xcode_16*.app | sort -V | tail -1)"
+          xcodebuild -version
+          brew install xcodegen
+      - name: Проект
+        run: xcodegen generate
+      - name: Сборка для симулятора
+        run: |
+          set -o pipefail
+          xcodebuild -project Finplan.xcodeproj -scheme Finplan -configuration Debug \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO build 2>&1 | tee build.log | grep -E "error:|warning: .*Finplan|BUILD (SUCCEEDED|FAILED)" || true
+          grep -q "BUILD SUCCEEDED" build.log
+      - name: Запуск в симуляторе и снимок экрана
+        run: |
+          DEV=$(xcrun simctl list devices available -j | python3 -c "import json,sys;d=json.load(sys.stdin)['devices'];print(next(x['udid'] for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone 16')))")
+          xcrun simctl boot "$DEV"; xcrun simctl bootstatus "$DEV" -b
+          xcrun simctl install "$DEV" build/Build/Products/Debug-iphonesimulator/Finplan.app
+          xcrun simctl launch "$DEV" com.vershov.finplan
+          sleep 25
+          mkdir -p shots
+          xcrun simctl io "$DEV" screenshot shots/launch.png
+          xcrun simctl ui "$DEV" appearance dark; sleep 4
+          xcrun simctl io "$DEV" screenshot shots/launch-dark.png
+          xcrun simctl spawn "$DEV" log show --last 2m --predicate 'process == "Finplan"' --style compact > shots/app.log 2>&1 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: simulator
+          path: |
+            shots
+            build.log

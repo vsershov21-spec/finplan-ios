@@ -1,0 +1,71 @@
+name: TestFlight
+# Запуск вручную: Actions → TestFlight → Run workflow.
+# Нужны секреты репозитория: APPLE_TEAM_ID, ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8 (содержимое AuthKey_XXXX.p8).
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Версия (например 1.0)"
+        required: false
+        default: "1.0"
+jobs:
+  upload:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Проверка секретов
+        env:
+          T: ${{ secrets.APPLE_TEAM_ID }}
+          K: ${{ secrets.ASC_KEY_ID }}
+          I: ${{ secrets.ASC_ISSUER_ID }}
+          P: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          for v in T K I P; do if [ -z "${!v}" ]; then echo "::error::Не заполнены секреты APPLE_TEAM_ID / ASC_KEY_ID / ASC_ISSUER_ID / ASC_KEY_P8"; exit 1; fi; done
+      - name: Xcode и XcodeGen
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.4.app 2>/dev/null || sudo xcode-select -s "$(ls -d /Applications/Xcode_16*.app | sort -V | tail -1)"
+          brew install xcodegen
+      - name: Ключ App Store Connect
+        env:
+          P: ${{ secrets.ASC_KEY_P8 }}
+          K: ${{ secrets.ASC_KEY_ID }}
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          printf '%s\n' "$P" > ~/.appstoreconnect/private_keys/AuthKey_$K.p8
+      - name: Проект
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: xcodegen generate
+      - name: Архив
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          K: ${{ secrets.ASC_KEY_ID }}
+          I: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -o pipefail
+          BUILD=$(( $(date +%s) / 60 ))
+          xcodebuild -project Finplan.xcodeproj -scheme Finplan -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath build/Finplan.xcarchive \
+            -allowProvisioningUpdates -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_$K.p8 \
+            -authenticationKeyID "$K" -authenticationKeyIssuerID "$I" \
+            DEVELOPMENT_TEAM="$TEAM_ID" MARKETING_VERSION="${{ github.event.inputs.version }}" CURRENT_PROJECT_VERSION="$BUILD" \
+            archive 2>&1 | tee archive.log | grep -E "error:|ARCHIVE (SUCCEEDED|FAILED)" || true
+          grep -q "ARCHIVE SUCCEEDED" archive.log
+      - name: Загрузка в TestFlight
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          K: ${{ secrets.ASC_KEY_ID }}
+          I: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -o pipefail
+          sed "s/TEAM_ID_HERE/$TEAM_ID/" ExportOptions.plist > build/ExportOptions.plist
+          xcodebuild -exportArchive -archivePath build/Finplan.xcarchive -exportOptionsPlist build/ExportOptions.plist -exportPath build/out \
+            -allowProvisioningUpdates -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_$K.p8 \
+            -authenticationKeyID "$K" -authenticationKeyIssuerID "$I" 2>&1 | tee export.log | grep -E "error:|EXPORT (SUCCEEDED|FAILED)|Upload" || true
+          grep -q "EXPORT SUCCEEDED" export.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs
+          path: "*.log"
