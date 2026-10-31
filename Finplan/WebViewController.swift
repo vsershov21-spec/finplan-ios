@@ -79,6 +79,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     private static func infoScript() -> String {
         var info: [String: Any] = ["platform": "ios", "version": appVersion, "faceid": Settings.lockOn, "biometry": Biometry.name]
         info["push"] = "unknown"
+        info["sms"] = SMSKey.token != nil
+        info["intents"] = true
         let data = (try? JSONSerialization.data(withJSONObject: info)) ?? Data("{}".utf8)
         return "window.finNativeInfo=\(String(data: data, encoding: .utf8) ?? "{}");"
     }
@@ -183,6 +185,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             }
         case "open":
             if let s = body["url"] as? String, let u = URL(string: s) { UIApplication.shared.open(u) }
+        case "smsToken":
+            SMSKey.token = body["token"] as? String
+            js("window.finNativeInfo&&(finNativeInfo.sms=true)")
         default:
             break
         }
