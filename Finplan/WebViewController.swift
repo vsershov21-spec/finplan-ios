@@ -1,5 +1,6 @@
 import UIKit
 import WebKit
+import ObjectiveC
 import WidgetKit
 import UserNotifications
 
@@ -46,6 +47,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             wv.isInspectable = true
             #endif
         }
+        wv.hideInputAccessoryBar() // без серой полоски «˄ ˅ Готово» над клавиатурой, как в мессенджерах
         webView = wv
         view = wv
     }
@@ -77,7 +79,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     }
 
     private static func infoScript() -> String {
-        var info: [String: Any] = ["platform": "ios", "version": appVersion, "faceid": Settings.lockOn, "biometry": Biometry.name]
+        var info: [String: Any] = ["platform": "ios", "version": appVersion, "faceid": Settings.lockOn, "faceidAsked": Settings.lockAsked, "biometry": Biometry.name]
         info["push"] = "unknown"
         info["sms"] = SMSKey.token != nil
         info["intents"] = true
@@ -177,6 +179,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
         case "faceid":
             let on = (body["on"] as? Bool) ?? true
+            Settings.lockAsked = true
             if on {
                 // включаем, только если владелец телефона подтвердит
                 Biometry.authenticate(reason: "Включить вход по \(Biometry.name)") { ok in Settings.lockOn = ok; if !ok { self.js("window.finNativeInfo&&(finNativeInfo.faceid=false)") } }
@@ -342,6 +345,29 @@ enum Settings {
     static var lockOn: Bool {
         get { UserDefaults.standard.object(forKey: "lockOn") as? Bool ?? true }
         set { UserDefaults.standard.set(newValue, forKey: "lockOn") }
+    }
+    /// человек уже ответил на «Входить по Face ID?» после первого входа
+    static var lockAsked: Bool {
+        get { UserDefaults.standard.bool(forKey: "lockAsked") }
+        set { UserDefaults.standard.set(newValue, forKey: "lockAsked") }
+    }
+}
+
+/// Убираем панель над клавиатурой (стрелки и «Готово»): подменяем класс содержимого WKWebView на наследника без inputAccessoryView.
+private final class NoAccessoryHelper: NSObject { @objc var inputAccessoryView: UIView? { nil } }
+extension WKWebView {
+    func hideInputAccessoryBar() {
+        guard let target = scrollView.subviews.first(where: { String(describing: type(of: $0)).hasPrefix("WKContent") }),
+              let base: AnyClass = object_getClass(target) else { return }
+        let name = "\(base)_FinNoAccessory"
+        var cls: AnyClass? = NSClassFromString(name)
+        if cls == nil, let c = objc_allocateClassPair(base, name, 0) {
+            if let m = class_getInstanceMethod(NoAccessoryHelper.self, #selector(getter: NoAccessoryHelper.inputAccessoryView)) {
+                class_addMethod(c, #selector(getter: UIResponder.inputAccessoryView), method_getImplementation(m), method_getTypeEncoding(m))
+            }
+            objc_registerClassPair(c); cls = c
+        }
+        if let cls { object_setClass(target, cls) }
     }
 }
 
