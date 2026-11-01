@@ -10,6 +10,18 @@
 
 Код сайта обновляется установщиком install.php, как раньше. Приложение пересобирать не нужно: оно всегда открывает свежую версию сайта.
 
+## Сборка на своём Маке (быстрый путь)
+
+1. Xcode → Settings → Accounts: войдите в свой Apple Developer.
+2. В Терминале:
+   ```
+   git clone https://github.com/vsershov21-spec/finplan-ios.git && cd finplan-ios
+   bash mac-setup.sh
+   ```
+   Скрипт сам найдёт Team ID (или передайте его: `bash mac-setup.sh ABCDE12345`), поставит XcodeGen и откроет проект.
+3. Подключите iPhone кабелем, выберите его сверху в Xcode и нажмите ▶. Подпись, App ID и App Group Xcode создаст сам.
+4. Первый запуск на iPhone: Настройки → Основные → VPN и управление устройством → доверять разработчику.
+
 ## Сборка
 
 Мак не нужен, всё собирает GitHub Actions на macOS.
