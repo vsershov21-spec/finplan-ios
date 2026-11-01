@@ -1,0 +1,4 @@
+2026-11-01 17:55:27.435 appintentsnltrainingprocessor[3268:13708] error: Unable to parse extract.actionsdata
+Finplan/AppIntentsMore.swift:42:19: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+Finplan/AppIntentsMore.swift:46:13: warning: initialization of immutable value 'sum' was never used; consider replacing with assignment to '_' or removing it
+Finplan/SMSIntent.swift:33:19: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
