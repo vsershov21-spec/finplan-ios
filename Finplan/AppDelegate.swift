@@ -19,6 +19,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         w.rootViewController = web
         w.makeKeyAndVisible()
         window = w
+        #if targetEnvironment(macCatalyst)
+        MacWindow.setup(w)
+        #endif
         // если пуши уже разрешены — обновим токен (Apple может его сменить)
         UNUserNotificationCenter.current().getNotificationSettings { s in
             if s.authorizationStatus == .authorized || s.authorizationStatus == .provisional {
@@ -87,3 +90,21 @@ enum QuickActions {
         ]
     }
 }
+
+#if targetEnvironment(macCatalyst)
+/// Окно на Mac: без серой полосы заголовка (кнопки окна поверх приложения), не меньше телефона,
+/// при первом запуске — широкое, чтобы сразу открылась раскладка для компьютера с боковым меню.
+enum MacWindow {
+    static func setup(_ w: UIWindow) {
+        guard let ws = w.windowScene else { DispatchQueue.main.async { if w.windowScene != nil { setup(w) } }; return }
+        ws.title = "Финплан"
+        ws.titlebar?.titleVisibility = .hidden
+        ws.titlebar?.toolbar = nil
+        ws.sizeRestrictions?.minimumSize = CGSize(width: 400, height: 640)
+        if !UserDefaults.standard.bool(forKey: "macSized") {
+            UserDefaults.standard.set(true, forKey: "macSized")
+            ws.requestGeometryUpdate(.Mac(systemFrame: CGRect(x: 120, y: 80, width: 1280, height: 840)))
+        }
+    }
+}
+#endif

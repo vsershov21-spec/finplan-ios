@@ -243,10 +243,13 @@ struct FinWidgetView: View {
 struct FinplanBundle: WidgetBundle {
     var body: some Widget {
         FinplanWidget()
+        #if !targetEnvironment(macCatalyst)
         if #available(iOSApplicationExtension 18.0, *) { FinControlSpend(); FinControlAgenda() }
+        #endif
     }
 }
 
+#if !targetEnvironment(macCatalyst)
 /// Кнопки для Пункта управления, экрана блокировки и кнопки «Действие» (iOS 18).
 @available(iOSApplicationExtension 18.0, *)
 struct FinControlSpend: ControlWidget {
@@ -269,13 +272,20 @@ struct FinControlAgenda: ControlWidget {
     }
 }
 
+#endif
+
 struct FinplanWidget: Widget {
+    #if targetEnvironment(macCatalyst)
+    static let families: [WidgetFamily] = [.systemSmall, .systemMedium]
+    #else
+    static let families: [WidgetFamily] = [.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline, .accessoryCircular]
+    #endif
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "FinplanBalance", provider: FinProvider()) { entry in
             FinWidgetView(entry: entry)
         }
         .configurationDisplayName("Финплан")
         .description("Ваши деньги, траты месяца и Кузьма, который напомнит записать.")
-        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline, .accessoryCircular])
+        .supportedFamilies(Self.families)
     }
 }

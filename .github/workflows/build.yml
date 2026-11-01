@@ -25,6 +25,13 @@ jobs:
             -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
             -derivedDataPath build CODE_SIGNING_ALLOWED=NO build 2>&1 | tee build.log | grep -E "error:|warning: .*Finplan|BUILD (SUCCEEDED|FAILED)" || true
           grep -q "BUILD SUCCEEDED" build.log
+      - name: Сборка для Mac (Mac Catalyst)
+        run: |
+          set -o pipefail
+          xcodebuild -project Finplan.xcodeproj -scheme Finplan -configuration Debug \
+            -destination 'generic/platform=macOS,variant=Mac Catalyst' \
+            -derivedDataPath build-mac CODE_SIGNING_ALLOWED=NO build 2>&1 | tee build-mac.log | grep -E "error:|BUILD (SUCCEEDED|FAILED)" || true
+          grep -q "BUILD SUCCEEDED" build-mac.log
       - name: Запуск в симуляторе и снимок экрана
         run: |
           DEV=$(xcrun simctl list devices available -j | python3 -c "import json,sys;d=json.load(sys.stdin)['devices'];print(next(x['udid'] for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone 16')))")
@@ -44,6 +51,7 @@ jobs:
           path: |
             shots
             build.log
+            build-mac.log
       - name: Результаты в ветку ci-results
         if: always()
         run: |

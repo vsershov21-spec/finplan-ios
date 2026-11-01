@@ -86,6 +86,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         info["push"] = "unknown"
         info["sms"] = SMSKey.token != nil
         info["intents"] = true
+        #if targetEnvironment(macCatalyst)
+        info["mac"] = true
+        #endif
         let data = (try? JSONSerialization.data(withJSONObject: info)) ?? Data("{}".utf8)
         return "window.finNativeInfo=\(String(data: data, encoding: .utf8) ?? "{}");"
     }
