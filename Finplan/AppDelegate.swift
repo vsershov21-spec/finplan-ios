@@ -11,17 +11,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         if let n = launchOptions?[.remoteNotification] as? [AnyHashable: Any], let u = n["url"] as? String {
             web.pendingTarget = WebViewController.target(fromPath: u)
         }
-        if let u = launchOptions?[.url] as? URL { web.pendingTarget = WebViewController.target(fromDeepLink: u) }
-        if let sc = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem { web.pendingTarget = sc.type }
         QuickActions.install()
-        let w = UIWindow(frame: UIScreen.main.bounds)
-        w.backgroundColor = UIColor(named: "Paper")
-        w.rootViewController = web
-        w.makeKeyAndVisible()
-        window = w
-        #if targetEnvironment(macCatalyst)
-        MacWindow.setup(w)
-        #endif
+        // окно создаёт SceneDelegate (жизненный цикл UIScene, которого требует Apple)
         // если пуши уже разрешены — обновим токен (Apple может его сменить)
         UNUserNotificationCenter.current().getNotificationSettings { s in
             if s.authorizationStatus == .authorized || s.authorizationStatus == .provisional {
@@ -31,14 +22,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         return true
     }
 
-    // долгое нажатие на значок приложения: «Трата», «Доход», «Что впереди», «Из банка»
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        web.open(target: shortcutItem.type); completionHandler(true)
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        web.open(target: WebViewController.target(fromDeepLink: url))
-        return true
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let c = UISceneConfiguration(name: "Default", sessionRole: connectingSceneSession.role)
+        c.delegateClass = SceneDelegate.self
+        return c
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -108,3 +95,32 @@ enum MacWindow {
     }
 }
 #endif
+
+/// Окно приложения. Сюда же приходят ссылки finplan:// и быстрые действия со значка.
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var window: UIWindow?
+    private var web: WebViewController? { (UIApplication.shared.delegate as? AppDelegate)?.web }
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options: UIScene.ConnectionOptions) {
+        guard let ws = scene as? UIWindowScene, let web else { return }
+        if let u = options.urlContexts.first?.url { web.pendingTarget = WebViewController.target(fromDeepLink: u) }
+        if let sc = options.shortcutItem { web.pendingTarget = sc.type }
+        let w = UIWindow(windowScene: ws)
+        w.backgroundColor = UIColor(named: "Paper")
+        w.rootViewController = web
+        w.makeKeyAndVisible()
+        window = w
+        #if targetEnvironment(macCatalyst)
+        MacWindow.setup(w)
+        #endif
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let u = URLContexts.first?.url { web?.open(target: WebViewController.target(fromDeepLink: u)) }
+    }
+
+    // долгое нажатие на значок: «Трата», «Доход», «Что впереди», «Из банка»
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        web?.open(target: shortcutItem.type); completionHandler(true)
+    }
+}
