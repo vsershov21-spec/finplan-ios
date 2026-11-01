@@ -41,6 +41,11 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         wv.backgroundColor = UIColor(named: "Paper")
         wv.scrollView.backgroundColor = UIColor(named: "Paper")
         wv.scrollView.contentInsetAdjustmentBehavior = .never
+        // Страница целиком никогда не прокручивается: вся прокрутка внутри приложения (списки, шторки).
+        // Иначе iOS при появлении клавиатуры сдвигает весь экран вверх и интерфейс «прыгает».
+        wv.scrollView.isScrollEnabled = false
+        wv.scrollView.bounces = false
+        wv.scrollView.delegate = PageLock.shared
         wv.allowsBackForwardNavigationGestures = false
         wv.allowsLinkPreview = false
         if #available(iOS 16.4, *) {
@@ -392,4 +397,11 @@ enum Haptics {
         default: UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
     }
+}
+
+/// Держит документ на месте: если iOS попробует сдвинуть страницу под клавиатуру, возвращаем её без анимации.
+final class PageLock: NSObject, UIScrollViewDelegate {
+    static let shared = PageLock()
+    func scrollViewDidScroll(_ sv: UIScrollView) { if sv.contentOffset != .zero { sv.contentOffset = .zero } }
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? { nil }
 }
