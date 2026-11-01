@@ -17,6 +17,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     private var lastSnap: FinSnapshot?
     private let lock = LockView()
     private let offline = OfflineView()
+    private let splash = SplashView()
     private var backgroundAt: Date?
     private var downloads: [WKDownload: URL] = [:]
     private var autoLoginTried = false
@@ -58,6 +59,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         lock.onUnlock = { [weak self] in self?.unlocked() }
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        splash.show(in: view)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in self?.splash.hide() } // на всякий случай: заставка не висит вечно
         if Settings.lockOn && Keychain.hasCredentials { lock.show(in: view) }
         reload()
     }
@@ -154,6 +157,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             }
         case "ready":
             loggedIn = true
+            splash.hide()
             if let t = pendingTarget {
                 pendingTarget = nil
                 if !["home", "ops", "forecast", "money", "plan", "more"].contains(t) { open(target: t) }
@@ -167,6 +171,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         case "credBad":
             Keychain.clear()
         case "loginShown":
+            splash.hide()
             loggedIn = false
             lock.hide()
             autoLogin()
@@ -312,6 +317,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         let e = error as NSError
         if e.code == NSURLErrorCancelled || e.code == 102 { return } // 102 — переход отдан загрузке
         pageReady = false
+        splash.hide()
         offline.show(in: view, message: e.localizedDescription)
     }
 

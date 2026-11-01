@@ -46,6 +46,10 @@ struct LogBankSMS: AppIntent {
 
 struct FinShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
+        AppShortcut(intent: LogSpend(), phrases: ["Записать трату в \(.applicationName)", "Трата в \(.applicationName)", "Запиши расход в \(.applicationName)"], shortTitle: "Записать трату", systemImageName: "minus.circle")
+        AppShortcut(intent: OpenFinplan(target: .agenda), phrases: ["Что впереди в \(.applicationName)", "Какие платежи в \(.applicationName)"], shortTitle: "Что впереди", systemImageName: "calendar")
+        AppShortcut(intent: OpenFinplan(target: .bank), phrases: ["Подборка из банка в \(.applicationName)"], shortTitle: "Из банка", systemImageName: "tray.and.arrow.down")
+        AppShortcut(intent: OpenFinplan(), phrases: ["Открыть \(.applicationName)"], shortTitle: "Открыть раздел", systemImageName: "rectangle.stack")
         AppShortcut(intent: LogBankSMS(), phrases: ["Записать СМС в \(.applicationName)"], shortTitle: "Записать СМС", systemImageName: "message")
     }
 }

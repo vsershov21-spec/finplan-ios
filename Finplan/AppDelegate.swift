@@ -12,6 +12,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
             web.pendingTarget = WebViewController.target(fromPath: u)
         }
         if let u = launchOptions?[.url] as? URL { web.pendingTarget = WebViewController.target(fromDeepLink: u) }
+        if let sc = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem { web.pendingTarget = sc.type }
+        QuickActions.install()
         let w = UIWindow(frame: UIScreen.main.bounds)
         w.backgroundColor = UIColor(named: "Paper")
         w.rootViewController = web
@@ -24,6 +26,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
             }
         }
         return true
+    }
+
+    // долгое нажатие на значок приложения: «Трата», «Доход», «Что впереди», «Из банка»
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        web.open(target: shortcutItem.type); completionHandler(true)
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
@@ -65,4 +72,18 @@ enum Push {
     #else
     static let env = "prod"
     #endif
+}
+
+/// Быстрые действия на значке приложения (долгое нажатие на домашнем экране).
+enum QuickActions {
+    static func install() {
+        let item = { (type: String, title: String, sub: String?, sym: String) in
+            UIApplicationShortcutItem(type: type, localizedTitle: title, localizedSubtitle: sub, icon: UIApplicationShortcutIcon(systemImageName: sym), userInfo: nil) }
+        UIApplication.shared.shortcutItems = [
+            item("spend", "Трата", "записать за пару касаний", "minus.circle"),
+            item("income", "Доход", nil, "plus.circle"),
+            item("agenda", "Что впереди", "платежи и поступления", "calendar"),
+            item("bank", "Из банка", "подборка из СМС", "tray.and.arrow.down")
+        ]
+    }
 }

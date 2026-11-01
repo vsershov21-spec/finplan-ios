@@ -1,3 +1,4 @@
+import AppIntents
 import WidgetKit
 import SwiftUI
 
@@ -239,6 +240,35 @@ struct FinWidgetView: View {
 }
 
 @main
+struct FinplanBundle: WidgetBundle {
+    var body: some Widget {
+        FinplanWidget()
+        if #available(iOSApplicationExtension 18.0, *) { FinControlSpend(); FinControlAgenda() }
+    }
+}
+
+/// Кнопки для Пункта управления, экрана блокировки и кнопки «Действие» (iOS 18).
+@available(iOSApplicationExtension 18.0, *)
+struct FinControlSpend: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: "FinControlSpend") {
+            ControlWidgetButton(action: OpenURLIntent(URL(string: "finplan://spend")!)) { Label("Трата", systemImage: "minus.circle.fill") }
+        }
+        .displayName("Записать трату")
+        .description("Открывает Финплан сразу на вводе суммы.")
+    }
+}
+@available(iOSApplicationExtension 18.0, *)
+struct FinControlAgenda: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: "FinControlAgenda") {
+            ControlWidgetButton(action: OpenURLIntent(URL(string: "finplan://agenda")!)) { Label("Что впереди", systemImage: "calendar") }
+        }
+        .displayName("Что впереди")
+        .description("Платежи и поступления на ближайший месяц.")
+    }
+}
+
 struct FinplanWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "FinplanBalance", provider: FinProvider()) { entry in
