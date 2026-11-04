@@ -64,6 +64,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         lock.onUnlock = { [weak self] in self?.unlocked() }
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
         splash.show(in: view)
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in self?.splash.hide() } // на всякий случай: заставка не висит вечно
         if Settings.lockOn && Keychain.hasCredentials { lock.show(in: view) }
@@ -396,6 +397,19 @@ enum Haptics {
         case "rigid": UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         default: UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
+    }
+}
+
+extension WebViewController {
+    /// После клавиатуры WKWebView иногда оставляет отступ снизу или сдвиг — тогда нижняя панель «отрывается» от низа экрана.
+    /// Сбрасываем отступы и просим страницу пересчитать раскладку.
+    @objc func keyboardDidHide() {
+        guard let wv = webView else { return }
+        wv.scrollView.contentInset = .zero
+        wv.scrollView.scrollIndicatorInsets = .zero
+        if wv.scrollView.contentOffset != .zero { wv.scrollView.contentOffset = .zero }
+        wv.setNeedsLayout(); wv.layoutIfNeeded()
+        wv.evaluateJavaScript("window.finRelayout && window.finRelayout()", completionHandler: nil)
     }
 }
 
