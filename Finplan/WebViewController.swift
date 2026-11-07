@@ -32,6 +32,10 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         let uc = WKUserContentController()
         uc.add(WeakMessageHandler(self), name: "fin")
         uc.addUserScript(WKUserScript(source: Self.infoScript(), injectionTime: .atDocumentStart, forMainFrameOnly: true))
+        // интерфейс — из приложения, запросы к серверу — через URLSession (LocalUI.swift)
+        uc.addScriptMessageHandler(ApiBridge(), contentWorld: .page, name: "finApi")
+        uc.addUserScript(WKUserScript(source: ApiBridge.script, injectionTime: .atDocumentStart, forMainFrameOnly: true))
+        cfg.setURLSchemeHandler(LocalUIScheme(), forURLScheme: LocalUI.scheme)
         cfg.userContentController = uc
 
         let wv = WKWebView(frame: .zero, configuration: cfg)
@@ -84,12 +88,18 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
 
     private func reload() {
         offline.hide()
-        var url = Self.base
+        // свой интерфейс уже в телефоне — открываем мгновенно и без сети; иначе (самый первый запуск) — с сайта, а интерфейс докачается
+        let start = LocalUI.isReady ? LocalUI.start : Self.base
+        var url = start
         if let t = pendingTarget, ["home", "ops", "forecast", "money", "plan", "more"].contains(t) {
-            url = URL(string: "#\(t)", relativeTo: Self.base)!.absoluteURL
+            url = URL(string: "#\(t)", relativeTo: start)!.absoluteURL
         }
         webView.load(URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20))
+        if !LocalUI.isReady { LocalUI.sync { [weak self] changed in if changed { self?.reload() } } }
     }
+
+    /// фоновая проверка новой версии интерфейса; переключаемся, когда человек вернётся в приложение после паузы
+    private func checkUI() { if LocalUI.isReady { LocalUI.sync { _ in } } }
 
     private static func infoScript() -> String {
         var info: [String: Any] = ["platform": "ios", "version": appVersion, "faceid": Settings.lockOn, "faceidAsked": Settings.lockAsked, "biometry": Biometry.name]
@@ -97,6 +107,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         info["sms"] = SMSKey.token != nil
         info["bioTok"] = BioKey.token != nil
         info["intents"] = true
+        info["base"] = Self.base.absoluteString
+        info["ui"] = LocalUI.version ?? ""
         #if targetEnvironment(macCatalyst)
         info["mac"] = true
         #endif
@@ -115,8 +127,10 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     @objc private func willEnterForeground() {
         let away = backgroundAt.map { Date().timeIntervalSince($0) } ?? 0
         backgroundAt = nil
-        _ = away // через 15 с в фоне сайт сам закроется кодом (visibilitychange) и спросит Face ID через bioAsk
+        // через 15 с в фоне сайт сам закроется кодом и спросит Face ID — в этот момент безопасно включить новую версию интерфейса
+        if away > Settings.relockAfter && LocalUI.applyPending() { pageReady = false; reload() }
         lock.hide()
+        checkUI()
         resumeSync()
         sendPushState()
     }
@@ -283,6 +297,10 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         if action.shouldPerformDownload { return decisionHandler(.download) }
         let scheme = url.scheme?.lowercased() ?? ""
         if scheme == "about" || scheme == "blob" || scheme == "data" { return decisionHandler(.allow) }
+        if scheme == LocalUI.scheme {
+            if url.query?.contains("a=export") == true { downloadViaApp(url); return decisionHandler(.cancel) }
+            return decisionHandler(.allow)
+        }
         if (scheme == "https" || scheme == "http") && url.host == Self.base.host {
             if url.query?.contains("a=export") == true { return decisionHandler(.download) }
             return decisionHandler(.allow)
@@ -312,6 +330,24 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         completionHandler(url)
     }
 
+    /// выгрузка из локального интерфейса: качаем через URLSession (там cookie входа) и отдаём в «Поделиться»
+    private func downloadViaApp(_ url: URL) {
+        var comps = URLComponents(url: Self.base.appendingPathComponent("api.php"), resolvingAgainstBaseURL: false)!
+        comps.percentEncodedQuery = url.query
+        LocalUI.session.dataTask(with: comps.url!) { [weak self] d, r, _ in
+            DispatchQueue.main.async {
+                guard let self, let d, (r as? HTTPURLResponse)?.statusCode == 200 else { return }
+                let name = (r as? HTTPURLResponse)?.value(forHTTPHeaderField: "Content-Disposition")?.components(separatedBy: "filename=").last?.trimmingCharacters(in: CharacterSet(charactersIn: "\"; ")) ?? "finplan.json"
+                let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+                try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+                let f = dir.appendingPathComponent(name.isEmpty ? "finplan.json" : name); try? d.write(to: f)
+                let vc = UIActivityViewController(activityItems: [f], applicationActivities: nil)
+                vc.popoverPresentationController?.sourceView = self.view
+                self.present(vc, animated: true)
+            }
+        }.resume()
+    }
+
     func downloadDidFinish(_ download: WKDownload) {
         guard let url = downloads.removeValue(forKey: download) else { return }
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
@@ -326,7 +362,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     // ссылки target=_blank
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if let url = action.request.url {
-            if url.host == Self.base.host { webView.load(action.request) } else { UIApplication.shared.open(url) }
+            if url.scheme == LocalUI.scheme || url.host == Self.base.host { webView.load(action.request) } else { UIApplication.shared.open(url) }
         }
         return nil
     }
@@ -348,6 +384,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         pageReady = true
         offline.hide()
+        checkUI()
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
