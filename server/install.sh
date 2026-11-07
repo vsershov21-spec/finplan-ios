@@ -97,7 +97,7 @@ $DOMAIN {
 	}
 	root * /opt/finplan/current
 	encode zstd gzip
-	@closed path /data /data/* /lib /lib/* /vendor /vendor/* *.sqlite *.sqlite-wal *.sqlite-shm *.md
+	@closed path /data /data/* /lib /lib/* *.sqlite *.sqlite-wal *.sqlite-shm *.md
 	respond @closed 403
 	header {
 		X-Content-Type-Options nosniff
