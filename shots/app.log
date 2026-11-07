@@ -1,0 +1,472 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-11-07 21:42:56.478 Df Finplan[5869:590c] [com.apple.xpc:connection] [0x600003d040f0] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.daemon
+2026-11-07 21:42:56.492 Df Finplan[5869:5911] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-11-07 21:42:56.496 Df Finplan[5869:590c] [com.apple.UIKit:BackgroundTask] Creating new assertion because there is no existing background assertion.
+2026-11-07 21:42:56.496 Df Finplan[5869:590c] [com.apple.UIKit:BackgroundTask] Creating new background assertion
+2026-11-07 21:42:56.496 Df Finplan[5869:590c] [com.apple.UIKit:BackgroundTask] Created new background assertion <BKSProcessAssertion: 0x600002104370>
+2026-11-07 21:42:56.497 Df Finplan[5869:590c] [com.apple.runningboard:connection] Initializing connection
+2026-11-07 21:42:56.497 Df Finplan[5869:590c] [com.apple.runningboard:process] Removing all cached process handles
+2026-11-07 21:42:56.498 Df Finplan[5869:590c] [com.apple.runningboard:connection] Creating connection to com.apple.runningboard
+2026-11-07 21:42:56.498 Df Finplan[5869:590c] [com.apple.xpc:connection] [0x600003d041e0] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-11-07 21:42:56.498 Df Finplan[5869:5912] [com.apple.runningboard:connection] Sending handshake request attempt #1 to server
+2026-11-07 21:42:56.501 Df Finplan[5869:5912] [com.apple.runningboard:connection] Handshake succeeded
+2026-11-07 21:42:56.501 Df Finplan[5869:5912] [com.apple.runningboard:connection] Identity resolved as app<com.vershov.finplan((null))>
+2026-11-07 21:42:56.504 Df Finplan[5869:590c] [com.apple.UIKit:BackgroundTask] Incrementing reference count for background assertion <BKSProcessAssertion: 0x600002104370>
+2026-11-07 21:42:56.505 Df Finplan[5869:590c] [com.apple.UIKit:BackgroundTask] Created background task <_UIBackgroundTaskInfo: 0x600001705500>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 339 (elapsed = 0).
+2026-11-07 21:42:56.506 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UIApplicationSceneKeyboardSettings on FBSSceneSettings
+2026-11-07 21:42:56.509 Df Finplan[5869:5910] [com.apple.xpc:connection] [0x103906690] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-11-07 21:42:56.535 A  Finplan[5869:5912] (RunningBoardServices) didChangeInheritances
+2026-11-07 21:42:56.538 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneOcclusionSettings> on FBSSceneSettings
+2026-11-07 21:42:56.539 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneInterfaceProtectionSceneSettings> on FBSSceneSettings
+2026-11-07 21:42:56.539 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UIHomeAffordanceHostSceneSettings> on FBSSceneSettings
+2026-11-07 21:42:56.541 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISystemShellSceneHostingEnvironmentSettings on FBSSceneSettings
+2026-11-07 21:42:56.542 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason added: 10; deactivation reasons: 0 -> 1024; animating application lifecycle event: 0
+2026-11-07 21:42:56.542 E  Finplan[5869:0] [com.apple.os_debug_log:] assertion failed: 24H232 22F77: libxpc.dylib + 72720 [021C0BF8-EDD4-395A-B281-2CC7A26F742F]: 0x7d
+2026-11-07 21:42:56.542 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneRenderingEnvironmentSettings on FBSSceneSettings
+2026-11-07 21:42:56.542 Df Finplan[5869:5906] [com.apple.BoardServices:Injection] activating monitor for service com.apple.frontboard.open
+2026-11-07 21:42:56.543 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneTransitioningHostSettings> on FBSSceneSettings
+2026-11-07 21:42:56.543 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingContentSizePreferenceClientSettings> on FBSSceneClientSettings
+2026-11-07 21:42:56.544 Df Finplan[5869:5906] [com.apple.BoardServices:Injection] activating monitor for service com.apple.frontboard.workspace-service
+2026-11-07 21:42:56.544 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension _UISceneHostingTraitCollectionPropagationSettings on FBSSceneSettings
+2026-11-07 21:42:56.545 Df Finplan[5869:5906] [com.apple.FrontBoard:Common] FBSWorkspace registering source: com.apple.frontboard.systemappservices
+2026-11-07 21:42:56.545 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingSheetPresentationSettings> on FBSSceneSettings
+2026-11-07 21:42:56.546 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingSheetPresentationClientSettings> on FBSSceneClientSettings
+2026-11-07 21:42:56.546 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UISceneHostingEventDeferringSettings> on FBSSceneSettings
+2026-11-07 21:42:56.547 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <UIKit__UITypedKeyValueSceneSettings> on FBSSceneSettings
+2026-11-07 21:42:56.555 Df Finplan[5869:590c] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <UIKit__UITypedKeyValueSceneSettings> on FBSSceneClientSettings
+2026-11-07 21:42:56.561 Df Finplan[5869:5906] [com.apple.FrontBoard:Common] FBSWorkspace connected to endpoint : <BSServiceConnectionEndpoint: 0x6000017093c0; target: com.apple.frontboard.systemappservices; service: com.apple.frontboard.workspace-service>
+2026-11-07 21:42:56.584 Df Finplan[5869:5906] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x600002c09780 com.apple.frontboard.systemappservices> attempting immediate handshake from activate
+2026-11-07 21:42:56.584 Df Finplan[5869:5906] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x600002c09780 com.apple.frontboard.systemappservices> sent handshake
+2026-11-07 21:42:56.589 Df Finplan[5869:590d] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneSettingsCore on FBSSceneSettings
+2026-11-07 21:42:56.590 Df Finplan[5869:590d] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneClientSettingsCore on FBSSceneClientSettings
+2026-11-07 21:42:56.590 Df Finplan[5869:590d] [com.apple.FrontBoard:SceneExtension] UIMutableApplicationSceneSettings setting counterpart class: UIApplicationSceneSettings
+2026-11-07 21:42:56.591 Df Finplan[5869:590d] [com.apple.FrontBoard:SceneExtension] UIMutableApplicationSceneClientSettings setting counterpart class: UIApplicationSceneClientSettings
+2026-11-07 21:42:56.591 Df Finplan[5869:590d] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneTransitionContextCore on FBSSceneTransitionContext
+2026-11-07 21:42:56.591 Df Finplan[5869:5906] [com.apple.runningboard:general] Added observer for process assertions expiration warning: <_RBSExpirationWarningClient: 0x60000020f160>
+2026-11-07 21:42:56.616 Df Finplan[5869:5906] [com.apple.UIKit:UIScreen] Evaluated capturing state as 0 on <UIScreen: 0x102f09bd0> for initial
+2026-11-07 21:42:56.617 Df Finplan[5869:5906] [com.apple.UIKit:UIScreen] Evaluated capturing state as 0 on <UIScreen: 0x102f09bd0> for CADisplay KVO
+2026-11-07 21:42:56.657 Df Finplan[5869:5906] [com.apple.Accessibility:AXSupportCommon] Read CategoryName: per-app = 1, category name = (null)
+2026-11-07 21:42:56.657 Df Finplan[5869:5906] [com.apple.Accessibility:AXSupportCommon] Read CategoryName: per-app = 0, category name = (null)
+2026-11-07 21:42:56.756 A  Finplan[5869:590e] (CoreFoundation) Loading Preferences From User Session CFPrefsD
+2026-11-07 21:42:56.864 Df Finplan[5869:590e] [com.apple.xpc:connection] [0x103906010] activating connection: mach=true listener=false peer=false name=com.apple.fontservicesd
+2026-11-07 21:42:56.960 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client] LA logging set up for this process.
+2026-11-07 21:42:56.963 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] Creating LAContext new cid:1
+2026-11-07 21:42:56.977 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x103804290] activating connection: mach=true listener=false peer=false name=com.apple.CoreAuthentication.daemon
+2026-11-07 21:42:57.506 Df Finplan[5869:590d] [com.apple.UIKit:BackgroundTask] Ending background task with UIBackgroundTaskIdentifier: 1
+2026-11-07 21:42:57.506 Df Finplan[5869:590d] [com.apple.UIKit:BackgroundTask] Ending task with identifier 1 and description: <_UIBackgroundTaskInfo: 0x600001705500>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 339 (elapsed = 1), _expireHandler: (null)
+2026-11-07 21:42:57.506 Df Finplan[5869:590d] [com.apple.UIKit:BackgroundTask] Decrementing reference count for assertion <BKSProcessAssertion: 0x600002104370> (used by background task with identifier 1: <_UIBackgroundTaskInfo: 0x600001705500>: taskID = 1, taskName = Launch Background Task for Coalescing, creationTime = 339 (elapsed = 1))
+2026-11-07 21:42:57.506 Df Finplan[5869:590d] [com.apple.UIKit:BackgroundTask] Will invalidate assertion: <BKSProcessAssertion: 0x600002104370> for task identifier: 1
+2026-11-07 21:42:57.648 A  Finplan[5869:590e] (RunningBoardServices) didChangeInheritances
+2026-11-07 21:42:57.679 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[1:1:0] created new cid:1
+2026-11-07 21:42:57.687 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,Biometry] canEvaluatePolicy:1 on LAContext[1:1:0] cid:2 returned Error Domain=com.apple.LocalAuthentication Code=-7 "No identities are enrolled." UserInfo={NSDebugDescription=No identities are enrolled., NSLocalizedDescription=Биометрическая регистрация не выполнялась.}
+2026-11-07 21:42:57.687 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client] returned biometryType: 2
+2026-11-07 21:42:57.687 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[1:1:0] deallocated
+2026-11-07 21:42:57.688 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] Creating LAContext new cid:3
+2026-11-07 21:42:57.688 Df Finplan[5869:590d] [com.apple.xpc:connection] [0x103804290] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-11-07 21:42:57.688 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x103806010] activating connection: mach=true listener=false peer=false name=com.apple.CoreAuthentication.daemon
+2026-11-07 21:42:57.690 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[2:2:0] created new cid:3
+2026-11-07 21:42:57.695 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,Biometry] canEvaluatePolicy:1 on LAContext[2:2:0] cid:4 returned Error Domain=com.apple.LocalAuthentication Code=-7 "No identities are enrolled." UserInfo={NSDebugDescription=No identities are enrolled., NSLocalizedDescription=Биометрическая регистрация не выполнялась.}
+2026-11-07 21:42:57.695 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client] returned biometryType: 2
+2026-11-07 21:42:57.695 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[2:2:0] deallocated
+2026-11-07 21:42:57.695 Df Finplan[5869:590d] [com.apple.xpc:connection] [0x103806010] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-11-07 21:42:57.767 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] Creating LAContext new cid:5
+2026-11-07 21:42:57.768 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x102f13db0] activating connection: mach=true listener=false peer=false name=com.apple.CoreAuthentication.daemon
+2026-11-07 21:42:57.770 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[3:3:0] created new cid:5
+2026-11-07 21:42:57.774 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,Biometry] canEvaluatePolicy:1 on LAContext[3:3:0] cid:6 returned Error Domain=com.apple.LocalAuthentication Code=-7 "No identities are enrolled." UserInfo={NSDebugDescription=No identities are enrolled., NSLocalizedDescription=Биометрическая регистрация не выполнялась.}
+2026-11-07 21:42:57.775 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client] returned biometryType: 2
+2026-11-07 21:42:57.775 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[3:3:0] deallocated
+2026-11-07 21:42:57.775 Df Finplan[5869:590d] [com.apple.xpc:connection] [0x102f13db0] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-11-07 21:42:57.850 Df Finplan[5869:5906] [com.apple.dt.xctest:Default] Registering for test daemon availability notify post.
+2026-11-07 21:42:57.850 Df Finplan[5869:5906] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-11-07 21:42:57.850 Df Finplan[5869:5906] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-11-07 21:42:57.850 Df Finplan[5869:5906] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-11-07 21:42:57.851 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason added: 11; deactivation reasons: 1024 -> 3072; animating application lifecycle event: 0
+2026-11-07 21:42:57.851 Df Finplan[5869:5906] [com.apple.UIKit:ViewServices] Launching as view service: NO
+2026-11-07 21:42:57.852 Df Finplan[5869:5906] [com.apple.UserNotifications:Connections] [com.vershov.finplan] Creating a user notification center
+2026-11-07 21:42:57.856 Df Finplan[5869:5906] [com.apple.FrontBoard:Common] Creating service facility connection with <BSServiceConnectionEndpoint: 0x60000171d2c0; target: com.apple.frontboard.systemappservices; service: com.apple.frontboard.system-service>
+2026-11-07 21:42:57.856 Df Finplan[5869:5906] [com.apple.FrontBoard:Common] [SBSApplicationClient:0x6000026011a0] Activating service facility
+2026-11-07 21:42:57.857 Df Finplan[5869:5906] [com.apple.UserNotifications:Connections] [com.vershov.finplan] Getting notification settings (async)
+2026-11-07 21:42:57.857 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason removed: 10; deactivation reasons: 3072 -> 2048; animating application lifecycle event: 0
+2026-11-07 21:42:57.858 Df Finplan[5869:5906] [com.apple.UIKit:EventBus] Event Timing Profile for Touch: not found, path="/System/Library/EventTimingProfiles/Sim.Touch.plist"
+2026-11-07 21:42:57.858 Df Finplan[5869:5906] [com.apple.UIKit:EventBus] Event Timing Profile for Pencil: not found, path="/System/Library/EventTimingProfiles/Sim.Pencil.plist"
+2026-11-07 21:42:57.858 Df Finplan[5869:5906] [com.apple.UIKit:UpdateScheduler] Selected display: name=LCD (PurpleMain), id=1
+2026-11-07 21:42:57.859 Df Finplan[5869:590c] [com.apple.FrontBoard:Common] [SBSApplicationClient:0x6000026011a0] Service facility connection activation received.
+2026-11-07 21:42:57.860 Df Finplan[5869:590d] [com.apple.xpc:connection] [0x10391b780] activating connection: mach=true listener=false peer=false name=com.apple.usernotifications.listener
+2026-11-07 21:42:57.865 Df Finplan[5869:590e] [com.apple.UserNotifications:Connections] [com.vershov.finplan] Got notification settings [ hasResult: 1 hasCompletionHandler: 1 ]
+2026-11-07 21:42:57.887 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x103918480] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-11-07 21:42:57.895 Df Finplan[5869:5906] [com.apple.UIKit:BackgroundTask] Will add backgroundTask with taskName: Persistent SceneSession Map Update, expirationHandler: <__NSGlobalBlock__: 0x1e6965d48>
+2026-11-07 21:42:57.896 Df Finplan[5869:5906] [com.apple.UIKit:BackgroundTask] Creating new assertion because there is no existing background assertion.
+2026-11-07 21:42:57.896 Df Finplan[5869:5906] [com.apple.UIKit:BackgroundTask] Creating new background assertion
+2026-11-07 21:42:57.896 Df Finplan[5869:5906] [com.apple.UIKit:BackgroundTask] Created new background assertion <BKSProcessAssertion: 0x6000021091d0>
+2026-11-07 21:42:57.897 Df Finplan[5869:5906] [com.apple.UIKit:BackgroundTask] Incrementing reference count for background assertion <BKSProcessAssertion: 0x6000021091d0>
+2026-11-07 21:42:57.897 Df Finplan[5869:5906] [com.apple.UIKit:BackgroundTask] Created background task <_UIBackgroundTaskInfo: 0x600001723240>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 340 (elapsed = 0).
+2026-11-07 21:42:57.898 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason added: 5; deactivation reasons: 2048 -> 2080; animating application lifecycle event: 1
+2026-11-07 21:42:57.898 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Should send trait collection or coordinate space update, interface style 1 -> 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:57.899 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:57.899 Df Finplan[5869:5906] [com.apple.UIKit:HomeAffordanceObservation] Initializing: <_UIHomeAffordanceSceneNotifier: 0x60000290fb10>; with scene: <UIWindowScene: 0x10391b9b0>
+2026-11-07 21:42:57.899 Df Finplan[5869:5906] [com.apple.BacklightServices:scenes] 0x600000c19440 setDelegate:<0x600000c0a340 _UIBacklightEnvironment> hasDelegate:YES for environment:sceneID:com.vershov.finplan-default
+2026-11-07 21:42:57.901 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:57.901 A  Finplan[5869:590d] (RunningBoardServices) didChangeInheritances
+2026-11-07 21:42:57.901 Df Finplan[5869:5906] [com.apple.UIKit:EventDeferring] [0x600002906450] Initialized with scene: <UIWindowScene: 0x10391b9b0>; behavior: <_UIEventDeferringBehavior_iOS: 0x60000024dc20>; availableForProcess: 1, systemShellManagesKeyboardFocus: 1
+2026-11-07 21:42:57.905 Df Finplan[5869:5906] [com.apple.BackBoard:EventDelivery] policyStatus:<BKSHIDEventDeliveryPolicyObserver: 0x600002114050; process scope; status: target> was:none
+2026-11-07 21:42:57.905 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Setting default evaluation strategy for UIUserInterfaceIdiomPhone to LastOneWins
+2026-11-07 21:42:57.906 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Scene target of keyboard event deferring environment did change: 1; scene: UIWindowScene: 0x10391b9b0; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Acom.vershov.finplan-default
+2026-11-07 21:42:57.906 Df Finplan[5869:5906] [com.apple.UIKit:EventDeferring] [0x600002906450] Scene target of event deferring environments did update: scene: 0x10391b9b0; current systemShellManagesKeyboardFocus: 1; systemShellManagesKeyboardFocusForScene: 1; eligibleForRecordRemoval: 1;
+2026-11-07 21:42:57.907 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Scene became target of keyboard event deferring environment: UIWindowScene: 0x10391b9b0; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Acom.vershov.finplan-default
+2026-11-07 21:42:57.908 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Setting default evaluation strategy for UIUserInterfaceIdiomPhone to SystemShellManaged
+2026-11-07 21:42:57.908 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Key window needs update: 0; currentKeyWindowScene: 0x0; evaluatedKeyWindowScene: 0x10391b9b0; currentApplicationKeyWindow: 0x0; evaluatedApplicationKeyWindow: 0x0; reason: UIWindowScene: 0x10391b9b0: Window scene became target of keyboard environment
+2026-11-07 21:42:57.909 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:57.909 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:57.910 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:57.976 Df Finplan[5869:5906] (WebCore) 0x102f1ce10 - ResourceMonitorThrottler::Initialized with count: 5, duration: 86400, maxHosts: 100
+2026-11-07 21:42:57.977 Df Finplan[5869:5906] (WebKit) 0x102f1cc18 - WebsiteDataStore::WebsiteDataStore sessionID=1
+2026-11-07 21:42:57.990 A  Finplan[5869:590c] (libsystem_containermanager.dylib) container_system_group_path_for_identifier
+2026-11-07 21:42:57.990 Df Finplan[5869:590c] [com.apple.containermanager:xpc] Requesting container lookup; class = 13, identifier = (null), group_identifier = systemgroup.com.apple.configurationprofiles, create = 1, temp = 0, euid = 501, uid = 501
+2026-11-07 21:42:57.990 A  Finplan[5869:590c] (libsystem_containermanager.dylib) container_query_t
+2026-11-07 21:42:57.990 Df Finplan[5869:590c] [com.apple.containermanager:xpc] Query; euid = 501, uid = 501, class = 13, identifier = [(null)](0), flags = 900000003
+2026-11-07 21:42:57.994 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] Creating LAContext new cid:7
+2026-11-07 21:42:57.995 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x1038058d0] activating connection: mach=true listener=false peer=false name=com.apple.CoreAuthentication.daemon
+2026-11-07 21:42:57.998 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[4:4:0] created new cid:7
+2026-11-07 21:42:57.999 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,Biometry] canEvaluatePolicy:1 on LAContext[4:4:0] cid:8 returned Error Domain=com.apple.LocalAuthentication Code=-7 "No identities are enrolled." UserInfo={NSDebugDescription=No identities are enrolled., NSLocalizedDescription=Биометрическая регистрация не выполнялась.}
+2026-11-07 21:42:57.999 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client] returned biometryType: 2
+2026-11-07 21:42:57.999 Df Finplan[5869:5906] [com.apple.LocalAuthentication:Client,LAContext] LAContext[4:4:0] deallocated
+2026-11-07 21:42:57.999 Df Finplan[5869:5912] [com.apple.xpc:connection] [0x1038058d0] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-11-07 21:42:58.000 Df Finplan[5869:590c] [com.apple.containermanager:unspecified] container_query_get_single_result: success
+2026-11-07 21:42:58.000 A  Finplan[5869:590c] (libsystem_containermanager.dylib) container_copy_object
+2026-11-07 21:42:58.000 Df Finplan[5869:590c] [com.apple.containermanager:unspecified] container_system_group_path_for_identifier: success
+2026-11-07 21:42:58.000 A  Finplan[5869:5906] (Security) SecItemCopyMatching_ios
+2026-11-07 21:42:58.000 Df Finplan[5869:590c] [com.apple.ManagedConfiguration:MC] Got system group container path from MCM for systemgroup.com.apple.configurationprofiles: /Users/runner/Library/Developer/CoreSimulator/Devices/4A57FB15-6E7C-49CC-BE93-450B18BD286E/data/Containers/Shared/SystemGroup/systemgroup.com.apple.configurationprofiles
+2026-11-07 21:42:58.001 Df Finplan[5869:5906] [com.apple.securityd:secitemratelimit] Not internal release, disabling SIRL
+2026-11-07 21:42:58.002 Df Finplan[5869:5906] [com.apple.securityd:thread-local-client-debug] SecSecurityClientGet new thread!
+2026-11-07 21:42:58.002 Df Finplan[5869:5906] [com.apple.securityd:keychain] System Keychain Always Supported set via feature flag to disabled
+2026-11-07 21:42:58.002 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d000f0] activating connection: mach=true listener=false peer=false name=com.apple.securityd
+2026-11-07 21:42:58.025 A  Finplan[5869:5906] (TCC) TCCAccessRequest() IPC
+2026-11-07 21:42:58.025 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d08780] activating connection: mach=true listener=false peer=false name=com.apple.tccd
+2026-11-07 21:42:58.039 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d08780] invalidated after the last release of the connection object
+2026-11-07 21:42:58.041 A  Finplan[5869:5906] (TCC) TCCAccessRequest() IPC
+2026-11-07 21:42:58.041 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d001e0] activating connection: mach=true listener=false peer=false name=com.apple.tccd
+2026-11-07 21:42:58.043 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d001e0] invalidated after the last release of the connection object
+2026-11-07 21:42:58.080 Df Finplan[5869:5906] (WebKit) 0x11a000a00 - [PID=0] WebProcessCache::updateCapacity: Cache is disabled because process swap on navigation is disabled
+2026-11-07 21:42:58.110 Df Finplan[5869:5906] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-11-07 21:42:58.155 Df Finplan[5869:5912] [com.apple.xpc:connection] [0x600003d001e0] activating connection: mach=true listener=false peer=false name=com.apple.webprivacyd
+2026-11-07 21:42:58.170 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x1038084c8 - PageConfiguration::delaysWebProcessLaunchUntilFirstLoad() -> false because of associated processPool value
+2026-11-07 21:42:58.170 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x104043808 - WebProcessPool::createWebPage: Not delaying WebProcess launch
+2026-11-07 21:42:58.195 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a000e20 - [PID=0] WebProcessProxy::constructor:
+2026-11-07 21:42:58.201 Df Finplan[5869:590c] [com.apple.BackBoard:MousePointer] Activating Connection: <(null):0x600002112c10>
+2026-11-07 21:42:58.222 Df Finplan[5869:5912] [com.apple.xpc:connection] [0x103808a80] activating connection: mach=true listener=false peer=false name=com.apple.lsd.mapdb
+2026-11-07 21:42:58.239 Df Finplan[5869:5912] [com.apple.extensionkit:launch] Launching process with config: bundleID: com.apple.WebKit.WebContent instance ID: Optional([_EXExtensionInstanceIdentifier: DCCF81CE-E2C9-4E2F-87B8-C899ED55A191])
+2026-11-07 21:42:58.278 Df Finplan[5869:5906] [com.apple.avkit:AVKit] +[AVPictureInPicturePlatformAdapter isPictureInPictureSupported]_block_invoke isPictureInPictureSupported NO
+2026-11-07 21:42:58.289 Df Finplan[5869:5906] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-11-07 21:42:58.290 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d08870] activating connection: mach=true listener=false peer=false name=com.apple.IOSurface.Remote
+2026-11-07 21:42:58.293 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a001500 - [PID=0, throttler=0x11a000eb0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'Process initialization'
+2026-11-07 21:42:58.307 Df Finplan[5869:590e] [com.apple.xpc:connection] [0x600003d25ef0] activating connection: mach=true listener=false peer=false name=com.apple.accessibility.mediaaccessibilityd
+2026-11-07 21:42:58.330 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::constructor:
+2026-11-07 21:42:58.334 Df Finplan[5869:5906] [com.apple.WebKit:Media] PlaybackSessionManagerProxy::PlaybackSessionManagerProxy(E3801EC0)
+2026-11-07 21:42:58.335 Df Finplan[5869:5906] [com.apple.WebKit:Fullscreen] PlaybackSessionManagerProxy::VideoPresentationManagerProxy(E3801EC0)
+2026-11-07 21:42:58.379 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a000e20 - [PID=0] WebProcessProxy::addExistingWebPage: webPage=0x10400fa18, pageProxyID=12, webPageID=13
+2026-11-07 21:42:58.381 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSwapping] 0x11a000a00 - [PID=0] WebProcessCache::updateCapacity: Cache is disabled by client
+2026-11-07 21:42:58.382 Df Finplan[5869:5906] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-11-07 21:42:58.382 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a001560 - [PID=0, throttler=0x11a0025b0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'Process initialization'
+2026-11-07 21:42:58.395 Df Finplan[5869:5906] [com.apple.WebKit:TextInteraction] Conforming to BrowserEngineKit text input protocol
+2026-11-07 21:42:58.407 Df Finplan[5869:5918] [com.apple.UIKit:BackgroundTask] Ending background task with UIBackgroundTaskIdentifier: 2
+2026-11-07 21:42:58.407 Df Finplan[5869:5918] [com.apple.UIKit:BackgroundTask] Ending task with identifier 2 and description: <_UIBackgroundTaskInfo: 0x600001723240>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 340 (elapsed = 1), _expireHandler: <__NSGlobalBlock__: 0x1e6965d48>
+2026-11-07 21:42:58.407 Df Finplan[5869:5918] [com.apple.UIKit:BackgroundTask] Decrementing reference count for assertion <BKSProcessAssertion: 0x6000021091d0> (used by background task with identifier 2: <_UIBackgroundTaskInfo: 0x600001723240>: taskID = 2, taskName = Persistent SceneSession Map Update, creationTime = 340 (elapsed = 1))
+2026-11-07 21:42:58.407 Df Finplan[5869:5918] [com.apple.UIKit:BackgroundTask] Will invalidate assertion: <BKSProcessAssertion: 0x6000021091d0> for task identifier: 2
+2026-11-07 21:42:58.417 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::loadRequest:
+2026-11-07 21:42:58.419 Df Finplan[5869:5906] [com.apple.runningboard:connection] Creating side-channel connection to com.apple.runningboard
+2026-11-07 21:42:58.420 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x600003d08a50] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-11-07 21:42:58.421 Df Finplan[5869:5906] [com.apple.runningboard:process] Hit the server for a process handle 93e46dd000016ed that resolved to: [app<com.vershov.finplan((null))>:5869]
+2026-11-07 21:42:58.421 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::WebPageProxy::shouldForceForegroundPriorityForClientNavigation() returns 1 based on PageClient::canTakeForegroundAssertions()
+2026-11-07 21:42:58.422 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0015f0 - [PID=0, throttler=0x11a000eb0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'Client navigation'
+2026-11-07 21:42:58.423 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::loadRequestWithNavigationShared:
+2026-11-07 21:42:58.423 A  Finplan[5869:5906] (libsystem_containermanager.dylib) container_system_group_path_for_identifier
+2026-11-07 21:42:58.423 Df Finplan[5869:5906] [com.apple.containermanager:xpc] Requesting container lookup; class = 13, identifier = com.apple.nsurlsessiond, group_identifier = systemgroup.com.apple.nsurlstoragedresources, create = 1, temp = 0, euid = 501, uid = 501
+2026-11-07 21:42:58.423 A  Finplan[5869:5906] (libsystem_containermanager.dylib) container_query_t
+2026-11-07 21:42:58.424 Df Finplan[5869:5906] [com.apple.containermanager:xpc] Query; euid = 501, uid = 501, class = 13, identifier = [com.apple.nsurlsessiond](1), flags = 900000003
+2026-11-07 21:42:58.425 Df Finplan[5869:5906] [com.apple.containermanager:unspecified] container_query_get_single_result: success
+2026-11-07 21:42:58.425 A  Finplan[5869:5906] (libsystem_containermanager.dylib) container_copy_object
+2026-11-07 21:42:58.426 Df Finplan[5869:5906] [com.apple.containermanager:unspecified] container_system_group_path_for_identifier: success
+2026-11-07 21:42:58.430 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a005320 - NetworkProcessProxy::NetworkProcessProxy
+2026-11-07 21:42:58.433 Df Finplan[5869:5906] [com.apple.CFNetwork:Default] Initializing CFHTTPCookieStorage singleton
+2026-11-07 21:42:58.433 Df Finplan[5869:5906] [com.apple.CFNetwork:Default] Creating default cookie storage with process/bundle identifier
+2026-11-07 21:42:58.435 Df Finplan[5869:5906] [com.apple.network:] networkd_settings_read_from_file initialized networkd settings by reading plist directly
+2026-11-07 21:42:58.436 Df Finplan[5869:5906] [com.apple.network:] networkd_settings_read_from_file initialized networkd settings by reading plist directly
+2026-11-07 21:42:58.438 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a003f40 - [PID=0, throttler=0x11a0053b0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'Process initialization'
+2026-11-07 21:42:58.443 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0049b0 - NavigationState is taking a process network assertion because a page load started
+2026-11-07 21:42:58.443 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a003fa0 - [PID=0, throttler=0x11a000eb0] ProcessThrottler::Activity::Activity: Starting background activity / 'Page Load'
+2026-11-07 21:42:58.444 Df Finplan[5869:5906] [com.apple.CFNetwork:Default] Initializing NSHTTPCookieStorage singleton
+2026-11-07 21:42:58.453 Df Finplan[5869:5906] [com.apple.CFNetwork:Default] Task <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1> resuming, timeouts(25.0, 120.0) qos(0x21) voucher(<OS_voucher: 0x600002105810>) activity(00000000-0000-0000-0000-000000000000)
+2026-11-07 21:42:58.453 A  Finplan[5869:5906] (CoreFoundation) Loading Preferences From User Session CFPrefsD
+2026-11-07 21:42:58.455 Df Finplan[5869:5906] [com.apple.FrontBoard:SceneExtension] Realizing settings extension <_UIApplicationSceneDisplaySettings> on FBSSceneSettings
+2026-11-07 21:42:58.468 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x11a000d00 - ApplicationStateTracker::ApplicationStateTracker(): m_isInBackground=1
+2026-11-07 21:42:58.472 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a003380 - ProcessStateMonitor::ProcessStateMonitor
+2026-11-07 21:42:58.473 Df Finplan[5869:5906] [com.apple.runningboard:monitor] Updating configuration of monitor M5869-1
+2026-11-07 21:42:58.473 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x103057600 - WKApplicationStateTrackingView: View with page [0x10400fa18, pageProxyID=12] was added to a window, _lastObservedStateWasBackground=0, isNowBackground=1
+2026-11-07 21:42:58.473 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::applicationDidEnterBackground: isSuspendedUnderLock? 0
+2026-11-07 21:42:58.485 A  Finplan[5869:5914] (RunningBoardServices) observedProcessStatesDidChange
+2026-11-07 21:42:58.495 Df Finplan[5869:590c] [com.apple.CFNetwork:Default] Initializing AlternativeServices Storage singleton
+2026-11-07 21:42:58.496 Df Finplan[5869:590c] [com.apple.FileURL:default] kExcludedFromBackupXattrName set on path: /Users/runner/Library/Developer/CoreSimulator/Devices/4A57FB15-6E7C-49CC-BE93-450B18BD286E/data/Containers/Data/Application/1748D2C1-002A-48E5-8467-82295AE2B7CE/Library/HTTPStorages/com.vershov.finplan
+2026-11-07 21:42:58.496 Df Finplan[5869:5914] [com.apple.runningboard:monitor] Received state update for 5869 (app<com.vershov.finplan((null))>, unknown-NotVisible
+2026-11-07 21:42:58.512 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::viewIsBecomingInvisible:
+2026-11-07 21:42:58.513 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x103035e00 (pageProxyID=12) -[WKWebView _endLiveResize]
+2026-11-07 21:42:58.514 Df Finplan[5869:5906] [com.apple.UIKit:Orientation] <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C) Scene updated orientation preferences: none -> ( Pu )
+2026-11-07 21:42:58.514 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Key window API is scene-level: YES
+2026-11-07 21:42:58.515 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] UIWindowScene: 0x10391b9b0: Window became key in scene: UIWindow: 0x10390b590; contextId: 0xDD786BFA: reason: UIWindowScene: 0x10391b9b0: Window requested to become key in scene: 0x10390b590
+2026-11-07 21:42:58.515 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Key window needs update: 1; currentKeyWindowScene: 0x0; evaluatedKeyWindowScene: 0x10391b9b0; currentApplicationKeyWindow: 0x0; evaluatedApplicationKeyWindow: 0x10390b590; reason: UIWindowScene: 0x10391b9b0: Window requested to become key in scene: 0x10390b590
+2026-11-07 21:42:58.515 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Window did become application key: UIWindow: 0x10390b590; contextId: 0xDD786BFA; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Acom.vershov.finplan-default
+2026-11-07 21:42:58.515 Df Finplan[5869:5906] [com.apple.UIKit:EventDeferring] [0x600002906450] Begin local event deferring requested for token: 0x6000026021c0; environments: 1; reason: UIWindowScene: 0x10391b9b0: Begin event deferring in keyboardFocus for window: 0x10390b590
+2026-11-07 21:42:58.516 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:58.516 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x11a000d00 - ApplicationStateTracker: UISceneWillEnterForeground
+2026-11-07 21:42:58.517 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a003380 - ProcessStateMonitor::~ProcessStateMonitor
+2026-11-07 21:42:58.517 Df Finplan[5869:5906] [com.apple.runningboard:monitor] unsubscribing configuration of monitor M5869-1
+2026-11-07 21:42:58.517 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::applicationWillEnterForeground: isSuspendedUnderLock? 0
+2026-11-07 21:42:58.522 Df Finplan[5869:5918] [com.apple.BackBoard:EventDelivery] policyStatus:<BKSHIDEventDeliveryPolicyObserver: 0x600002114050; token: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Acom.vershov.finplan-default; status: ancestor> was:target
+2026-11-07 21:42:58.522 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] Activating connection to server: (null)
+2026-11-07 21:42:58.523 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] server remote target <BSXPCServiceConnectionProxy<BKSKeyboardServiceClientToServerIPC>: 0x600002921e30>
+2026-11-07 21:42:58.523 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] currently observing: YES
+2026-11-07 21:42:58.524 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] connected: (
+    "<BKSHIDKeyboardDevice: 0x60000025efa0> {\134n    senderID: 0xACEFADE00000003;\134n    transport: <nil>;\134n    language: <nil>;\134n    layout: US;\134n    countryCode: 0;\134n    standardType: 4294967295;\134n    subinterfaceID: 0;\134n    capsLockKeyHasLanguageSwitchLabel: NO;\134n    globeKeyLabelHasGlobeSymbol: NO;\134n}"
+)
+2026-11-07 21:42:58.524 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] currently observing: NO
+2026-11-07 21:42:58.524 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] disconnected: (
+    "<BKSHIDKeyboardDevice: 0x60000025efa0> {\134n    senderID: 0xACEFADE00000003;\134n    transport: <nil>;\134n    language: <nil>;\134n    layout: US;\134n    countryCode: 0;\134n    standardType: 4294967295;\134n    subinterfaceID: 0;\134n    capsLockKeyHasLanguageSwitchLabel: NO;\134n    globeKeyLabelHasGlobeSymbol: NO;\134n}"
+)
+2026-11-07 21:42:58.524 Df Finplan[5869:5918] [com.apple.BackBoard:EventDelivery] observerPolicyDidChange: 0x600002114050 -> <_UIKeyWindowSceneObserver: 0x600000c1f690>
+2026-11-07 21:42:58.524 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] currently observing: YES
+2026-11-07 21:42:58.525 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] connected: (
+    "<BKSHIDKeyboardDevice: 0x60000025f140> {\134n    senderID: 0xACEFADE00000003;\134n    transport: <nil>;\134n    language: <nil>;\134n    layout: US;\134n    countryCode: 0;\134n    standardType: 4294967295;\134n    subinterfaceID: 0;\134n    capsLockKeyHasLanguageSwitchLabel: NO;\134n    globeKeyLabelHasGlobeSymbol: NO;\134n}"
+)
+2026-11-07 21:42:58.525 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] currently observing: NO
+2026-11-07 21:42:58.525 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] disconnected: (
+    "<BKSHIDKeyboardDevice: 0x60000025f140> {\134n    senderID: 0xACEFADE00000003;\134n    transport: <nil>;\134n    language: <nil>;\134n    layout: US;\134n    countryCode: 0;\134n    standardType: 4294967295;\134n    subinterfaceID: 0;\134n    capsLockKeyHasLanguageSwitchLabel: NO;\134n    globeKeyLabelHasGlobeSymbol: NO;\134n}"
+)
+2026-11-07 21:42:58.530 Df Finplan[5869:5906] [com.apple.UIKit:HardwareKeyboard] -[UIApplication GSKeyboardForHWLayout:senderID:forceRebuild:createIfNeeded:], New hardware layout is created with US layout and 0 standardType.
+2026-11-07 21:42:58.531 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] currently observing: YES
+2026-11-07 21:42:58.532 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] connected: (
+    "<BKSHIDKeyboardDevice: 0x60000025ba80> {\134n    senderID: 0xACEFADE00000003;\134n    transport: <nil>;\134n    language: <nil>;\134n    layout: US;\134n    countryCode: 0;\134n    standardType: 4294967295;\134n    subinterfaceID: 0;\134n    capsLockKeyHasLanguageSwitchLabel: NO;\134n    globeKeyLabelHasGlobeSymbol: NO;\134n}"
+)
+2026-11-07 21:42:58.532 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] currently observing: NO
+2026-11-07 21:42:58.532 Df Finplan[5869:5906] [com.apple.BackBoard:Keyboard] disconnected: (
+    "<BKSHIDKeyboardDevice: 0x60000025ba80> {\134n    senderID: 0xACEFADE00000003;\134n    transport: <nil>;\134n    language: <nil>;\134n    layout: US;\134n    countryCode: 0;\134n    standardType: 4294967295;\134n    subinterfaceID: 0;\134n    capsLockKeyHasLanguageSwitchLabel: NO;\134n    globeKeyLabelHasGlobeSymbol: NO;\134n}"
+)
+2026-11-07 21:42:58.532 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::updateActivityState: view visibility state changed 0 -> 1
+2026-11-07 21:42:58.533 Df Finplan[5869:5906] [com.apple.WebKit:ViewState] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::viewIsBecomingVisible:
+2026-11-07 21:42:58.533 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=0] WebPageProxy::updateThrottleState: UIProcess is taking a foreground assertion because the view is visible
+2026-11-07 21:42:58.534 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a007460 - [PID=0, throttler=0x11a000eb0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'View is visible'
+2026-11-07 21:42:58.537 Df Finplan[5869:5906] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:com.vershov.finplan-default  persistentID: 0FFEA714-9881-4A8A-A14B-2DE139EBCB0C
+2026-11-07 21:42:58.537 Df Finplan[5869:5906] [com.apple.UIKit:Application] Ignoring already applied deactivation reason: 5; deactivation reasons: 2080
+2026-11-07 21:42:58.538 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason added: 12; deactivation reasons: 2080 -> 6176; animating application lifecycle event: 1
+2026-11-07 21:42:58.538 Df Finplan[5869:5912] [com.apple.runningboard:process] Starting death monitoring for handle [xpcservice<com.apple.WebKit.WebContent([app<com.vershov.finplan((null))>:5869])>{vt hash: 71395982}[uuid:DCCF81CE-E2C9-4E2F-87B8-C899ED55A191]:5875]
+2026-11-07 21:42:58.540 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason removed: 11; deactivation reasons: 6176 -> 4128; animating application lifecycle event: 1
+2026-11-07 21:42:58.541 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:58.580 Df Finplan[5869:590c] [com.apple.CFNetwork:Default] Connection 0: creating secure tcp or quic connection
+2026-11-07 21:42:58.583 Df Finplan[5869:5906] [com.apple.network:activity] Create activity from XPC object <nw_activity 50:1 [0314BB77-B697-480F-8ACC-9C4228C69B08] (reporting strategy default)>
+2026-11-07 21:42:58.583 Df Finplan[5869:5906] [com.apple.network:activity] Create activity from XPC object <nw_activity 50:2 [9F58C595-2FF9-412D-8F92-293C098D7EB1] (reporting strategy default)>
+2026-11-07 21:42:58.583 Df Finplan[5869:5906] [com.apple.network:activity] Set activity <nw_activity 50:1 [0314BB77-B697-480F-8ACC-9C4228C69B08] (reporting strategy default)> as the global parent
+2026-11-07 21:42:58.584 Df Finplan[5869:5906] [com.apple.UIKit:UpdateScheduler] Target list changed: <CADisplay:LCD PurpleMain>
+2026-11-07 21:42:58.585 Df Finplan[5869:5906] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:com.vershov.finplan-default  persistentID: 0FFEA714-9881-4A8A-A14B-2DE139EBCB0C
+2026-11-07 21:42:58.586 A  Finplan[5869:5906] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.589 Df Finplan[5869:5918] [com.apple.UIIntelligenceSupport:xpc] establishing connection to agent
+2026-11-07 21:42:58.590 Df Finplan[5869:5906] [com.apple.UIKit:EventDeferring] [0x600002906450] Scene target of event deferring environments did update: scene: 0x10391b9b0; current systemShellManagesKeyboardFocus: 1; systemShellManagesKeyboardFocusForScene: 1; eligibleForRecordRemoval: 1;
+2026-11-07 21:42:58.590 Df Finplan[5869:5906] [com.apple.UIKit:KeyWindow] Scene became target of keyboard event deferring environment: UIWindowScene: 0x10391b9b0; scene identity: com.apple.frontboard.systemappservices/FBSceneManager:sceneID%3Acom.vershov.finplan-default
+2026-11-07 21:42:58.591 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 1, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:42:58.591 Df Finplan[5869:5906] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:com.vershov.finplan-default  persistentID: 0FFEA714-9881-4A8A-A14B-2DE139EBCB0C
+2026-11-07 21:42:58.591 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason removed: 12; deactivation reasons: 4128 -> 32; animating application lifecycle event: 1
+2026-11-07 21:42:58.591 Df Finplan[5869:5906] [com.apple.KeyboardArbiter:Client] Send setDeactivating: N (-DeactivationReason:SuspendedEventsOnly)
+2026-11-07 21:42:58.592 Df Finplan[5869:5906] [com.apple.UIKit:Application] Deactivation reason removed: 5; deactivation reasons: 32 -> 0; animating application lifecycle event: 0
+2026-11-07 21:42:58.592 Df Finplan[5869:5906] [com.apple.WebKit:Fullscreen] PlaybackSessionManagerProxy::applicationDidBecomeActive(E3801EC0)
+2026-11-07 21:42:58.594 Df Finplan[5869:5906] [com.apple.KeyboardArbiter:Client] startConnection
+2026-11-07 21:42:58.594 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x102f1a420] activating connection: mach=true listener=false peer=false name=com.apple.UIKit.KeyboardManagement.hosted
+2026-11-07 21:42:58.595 Df Finplan[5869:5906] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:com.vershov.finplan-default  persistentID: 0FFEA714-9881-4A8A-A14B-2DE139EBCB0C
+2026-11-07 21:42:58.595 Df Finplan[5869:5906] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:com.vershov.finplan-default  persistentID: 0FFEA714-9881-4A8A-A14B-2DE139EBCB0C
+2026-11-07 21:42:58.598 Df Finplan[5869:5906] [com.apple.KeyboardArbiter:Client] handleKeyboardChange: set currentKeyboard:N (wasKeyboard:N)
+2026-11-07 21:42:58.599 Df Finplan[5869:5906] [com.apple.UIKit:KeyboardSceneDelegate] forceReloadInputViews
+2026-11-07 21:42:58.599 Df Finplan[5869:5906] [com.apple.UIKit:KeyboardSceneDelegate] Reloading input views for: <(null): 0x0; > force: 1
+2026-11-07 21:42:58.602 Df Finplan[5869:5906] [com.apple.UIKit:KeyboardArbiterClientLog] isWritingToolsHandlingKeyboardTracking:Y (WT ready:Y, Arbiter ready:Y)
+2026-11-07 21:42:58.603 Df Finplan[5869:5910] [com.apple.CoreAnalytics:client] No XPC connection in Simulator
+2026-11-07 21:42:58.608 Df Finplan[5869:5918] [com.apple.xpc:session] [0x600002122710] Session created.
+2026-11-07 21:42:58.608 Df Finplan[5869:5918] [com.apple.xpc:session] [0x600002122710] Session created from connection [0x600003d24a50]
+2026-11-07 21:42:58.638 Df Finplan[5869:5906] [com.apple.network:activity] <nw_activity 50:1 [0314BB77-B697-480F-8ACC-9C4228C69B08] (global parent) (reporting strategy default) complete (reason success)> complete with reason 2 (success), duration 3009ms
+2026-11-07 21:42:58.638 Df Finplan[5869:5906] [com.apple.network:activity] <nw_activity 50:2 [9F58C595-2FF9-412D-8F92-293C098D7EB1] (reporting strategy default) complete (reason success)> complete with reason 2 (success), duration 3009ms
+2026-11-07 21:42:58.638 Df Finplan[5869:5906] [com.apple.network:activity] Unsetting the global parent activity <nw_activity 50:1 [0314BB77-B697-480F-8ACC-9C4228C69B08] (global parent) (reporting strategy default) complete (reason success)>
+2026-11-07 21:42:58.639 Df Finplan[5869:5906] [com.apple.network:activity] Unset the global parent activity
+2026-11-07 21:42:58.643 E  Finplan[5869:5910] [com.apple.app_launch_measurement:General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-11-07 21:42:58.644 E  Finplan[5869:5947] [com.apple.app_launch_measurement:General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+2026-11-07 21:42:58.650 Df Finplan[5869:5918] [com.apple.xpc:connection] [0x600003d24a50] activating connection: mach=true listener=false peer=false name=com.apple.uiintelligencesupport.agent
+2026-11-07 21:42:58.651 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.653 Df Finplan[5869:5918] [com.apple.xpc:session] [0x600002122710] Session activated
+2026-11-07 21:42:58.654 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.673 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.678 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.688 Df Finplan[5869:590c] [com.apple.CFNetwork:Default] Connection 1: enabling TLS
+2026-11-07 21:42:58.688 Df Finplan[5869:590c] [com.apple.CFNetwork:Default] Connection 1: starting, TC(0x0)
+2026-11-07 21:42:58.689 Df Finplan[5869:590c] [com.apple.network:connection] [C1 9395253D-D13A-4926-9BB8-741D021AAEC3 Hostname#5f23c4d1:443 quic-connection, url: https://fin.vershov.com/api.php, definite, attribution: developer, context: com.apple.CFNetwork.NSURLSession.{03DD154D-64C8-4326-AF85-0C91C62A9468}{(null)}{Y}{2}{0x0} (private), proc: 1B082860-AA3F-3751-9833-8E3EE8369150] start
+2026-11-07 21:42:58.689 Df Finplan[5869:590c] [com.apple.network:connection] [C1 Hostname#5f23c4d1:443 initial parent-flow ((null))] event: path:start @0.000s
+2026-11-07 21:42:58.691 Df Finplan[5869:590c] [com.apple.network:connection] [C1 Hostname#5f23c4d1:443 waiting parent-flow (satisfied (Path is satisfied), interface: en0)] event: path:satisfied @0.002s, uuid: 264DB5DA-93C4-4063-9485-B1F53C4C3E9D
+2026-11-07 21:42:58.692 Df Finplan[5869:590c] [com.apple.network:connection] [C1 Hostname#5f23c4d1:443 in_progress parent-flow (satisfied (Path is satisfied), interface: en0)] event: flow:start_connect @0.002s
+2026-11-07 21:42:58.692 Df Finplan[5869:590c] [com.apple.network:connection] nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state preparing
+2026-11-07 21:42:58.695 Df Finplan[5869:590c] [com.apple.network:connection] [C1 Hostname#5f23c4d1:443 in_progress parent-flow (satisfied (Path is satisfied), interface: en0)] event: flow:start_child @0.006s
+2026-11-07 21:42:58.695 Df Finplan[5869:590c] [com.apple.network:connection] [C1.1 Hostname#5f23c4d1:443 initial path ((null))] event: path:start @0.006s
+2026-11-07 21:42:58.695 Df Finplan[5869:590c] [com.apple.network:connection] [C1.1 Hostname#5f23c4d1:443 waiting path (satisfied (Path is satisfied), interface: en0)] event: path:satisfied @0.006s, uuid: 264DB5DA-93C4-4063-9485-B1F53C4C3E9D
+2026-11-07 21:42:58.695 Df Finplan[5869:590c] [com.apple.network:connection] [C1.1 Hostname#5f23c4d1:443 in_progress transform (satisfied (Path is satisfied), interface: en0)] event: transform:start @0.006s
+2026-11-07 21:42:58.695 Df Finplan[5869:590c] [com.apple.network:connection] [C1.1.1 Hostname#5f23c4d1:443 initial path ((null))] event: path:start @0.006s
+2026-11-07 21:42:58.696 Df Finplan[5869:590c] [com.apple.network:connection] [C1.1.1 Hostname#5f23c4d1:443 waiting path (satisfied (Path is satisfied), interface: en0)] event: path:satisfied @0.006s, uuid: 8C022F2E-1730-4291-A9DC-CE17FB0D456E
+2026-11-07 21:42:58.696 Df Finplan[5869:590c] [com.apple.network:connection] [C1.1.1 Hostname#5f23c4d1:443 in_progress resolver (satisfied (Path is satisfied), interface: en0)] event: resolver:start_dns @0.007s
+2026-11-07 21:42:58.697 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.701 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.710 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.712 Df Finplan[5869:5912] [com.apple.extensionkit:launch] Created new process ExtensionProcess: bundleID: com.apple.WebKit.WebContent instance ID: Optional([_EXExtensionInstanceIdentifier: DCCF81CE-E2C9-4E2F-87B8-C899ED55A191]) pid: 5875.
+2026-11-07 21:42:58.712 A  Finplan[5869:5910] (RunningBoardServices) didChangeInheritances
+2026-11-07 21:42:58.713 Df Finplan[5869:5912] [com.apple.extensionkit:launch] Launching process with config: bundleID: com.apple.WebKit.GPU instance ID: Optional([_EXExtensionInstanceIdentifier: CAC1E89A-E279-413C-BA87-6225F6D3F14A])
+2026-11-07 21:42:58.713 Df Finplan[5869:5946] [com.apple.WebKit:Process] AssertionCapability::AssertionCapability: taking assertion Foreground
+2026-11-07 21:42:58.715 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.723 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.729 A  Finplan[5869:5915] (CoreFoundation) Updating Key-Value Observers Of Preferences
+2026-11-07 21:42:58.734 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x10380b990] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-11-07 21:42:58.756 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a000e20 - [PID=5875] WebProcessProxy::didFinishLaunching:
+2026-11-07 21:42:58.761 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a000eb0 - [PID=5875] ProcessThrottler::didConnectToProcess
+2026-11-07 21:42:58.761 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a000eb0 - [PID=5875] ProcessThrottler::setThrottleState: Updating process assertion type to 3 (foregroundActivities=3, backgroundActivities=6)
+2026-11-07 21:42:58.761 Df Finplan[5869:5906] [com.apple.WebKit:Process] AssertionCapability::AssertionCapability: taking assertion Foreground
+2026-11-07 21:42:58.763 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x60000170d140 - WKProcessAssertionBackgroundTaskManager: beginBackgroundTaskWithName
+2026-11-07 21:42:58.764 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] WKProcessAssertionBackgroundTaskManager: Took a FinishTaskInterruptable assertion for own process
+2026-11-07 21:42:58.764 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a000e20 - [PID=5875] WebProcessProxy::didChangeThrottleState: type=2
+2026-11-07 21:42:58.764 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a000e20 - [PID=5875] WebProcessProxy::didChangeThrottleState(Foreground) Taking foreground assertion for network process
+2026-11-07 21:42:58.764 Df Finplan[5869:5918] [com.apple.WebKit:ProcessSuspension] 0x11a0094f0 - ProcessAssertion::acquireSync Trying to take RBS assertion 'WebProcess Foreground Assertion' for process with PID=5875
+2026-11-07 21:42:58.765 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a007490 - [PID=0, throttler=0x11a0053b0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'Networking for foreground view(s)'
+2026-11-07 21:42:58.765 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0074c0 - [PID=0, throttler=0x11a0025b0] ProcessThrottler::Activity::Activity: Starting foreground activity / 'GPU for foreground view(s)'
+2026-11-07 21:42:58.765 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a005320 - NetworkProcessProxy::sendXPCEndpointToProcess(0x11a000e20) state = 1 has connection = 1 XPC endpoint message = 0x0
+2026-11-07 21:42:58.775 Df Finplan[5869:5918] [com.apple.WebKit:ProcessSuspension] 0x11a0094f0 - ProcessAssertion() Successfully granted capability
+2026-11-07 21:42:58.798 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a001500 - [PID=5875, throttler=0x11a000eb0] ProcessThrottler::Activity::invalidate: Ending foreground activity / 'Process initialization'
+2026-11-07 21:42:58.798 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a005320 - NetworkProcessProxy::getNetworkProcessConnection: Taking a background assertion because web process pid 5875 (core identifier 11) is requesting a connection
+2026-11-07 21:42:58.864 Df Finplan[5869:590c] [com.apple.CFNetwork:Default] Task <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1> setting up Connection 1
+2026-11-07 21:42:58.984 Df Finplan[5869:5917] [com.apple.network:connection] nw_endpoint_resolver_update [C1.1.1 Hostname#5f23c4d1:443 in_progress resolver (satisfied (Path is satisfied), interface: en0)] Adding endpoint handler for IPv4#18f31a41:443
+2026-11-07 21:42:58.984 Df Finplan[5869:5917] [com.apple.network:connection] nw_endpoint_resolver_update [C1.1.1 Hostname#5f23c4d1:443 in_progress resolver (satisfied (Path is satisfied), interface: en0)] Adding endpoint handler for IPv4#5ce0ea42:443
+2026-11-07 21:42:58.984 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1 Hostname#5f23c4d1:443 in_progress resolver (satisfied (Path is satisfied), interface: en0)] event: resolver:receive_dns @0.295s
+2026-11-07 21:42:58.984 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1.1 IPv4#18f31a41:443 initial path ((null))] event: path:start @0.295s
+2026-11-07 21:42:58.984 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1.1 IPv4#18f31a41:443 waiting path (satisfied (Path is satisfied), interface: en0)] event: path:satisfied @0.295s, uuid: 2F011B1A-CCF9-4368-A982-1FA6FA2B9E80
+2026-11-07 21:42:58.985 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1.1 IPv4#18f31a41:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] event: flow:start_connect @0.295s
+2026-11-07 21:42:59.072 Df Finplan[5869:5912] [com.apple.runningboard:process] Starting death monitoring for handle [xpcservice<com.apple.WebKit.GPU([app<com.vershov.finplan((null))>:5869])>{vt hash: 223737757}[uuid:CAC1E89A-E279-413C-BA87-6225F6D3F14A]:5877]
+2026-11-07 21:42:59.089 Df Finplan[5869:5912] [com.apple.extensionkit:launch] Created new process ExtensionProcess: bundleID: com.apple.WebKit.GPU instance ID: Optional([_EXExtensionInstanceIdentifier: CAC1E89A-E279-413C-BA87-6225F6D3F14A]) pid: 5877.
+2026-11-07 21:42:59.089 Df Finplan[5869:5912] [com.apple.extensionkit:launch] Launching process with config: bundleID: com.apple.WebKit.Networking instance ID: Optional([_EXExtensionInstanceIdentifier: A219C59B-AB63-4528-9736-AF6BE16942BF])
+2026-11-07 21:42:59.089 Df Finplan[5869:5917] [com.apple.WebKit:Process] AssertionCapability::AssertionCapability: taking assertion Foreground
+2026-11-07 21:42:59.091 E  Finplan[5869:5912] [com.apple.extensionkit:default] Failed to resolve host network app id to config: bundleID: com.apple.WebKit.Networking instance ID: Optional([_EXExtensionInstanceIdentifier: A219C59B-AB63-4528-9736-AF6BE16942BF])
+2026-11-07 21:42:59.091 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x103808750] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-11-07 21:42:59.096 Df Finplan[5869:590e] [com.apple.network:connection] [C1.1.1.2 IPv4#5ce0ea42:443 initial path ((null))] event: path:start @0.407s
+2026-11-07 21:42:59.097 Df Finplan[5869:590e] [com.apple.network:connection] [C1.1.1.2 IPv4#5ce0ea42:443 waiting path (satisfied (Path is satisfied), interface: en0)] event: path:satisfied @0.407s, uuid: 041A0BF9-782F-4193-B15D-1A8BF5024D55
+2026-11-07 21:42:59.110 Df Finplan[5869:590e] [com.apple.network:connection] [C1.1.1.2 IPv4#5ce0ea42:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] event: flow:start_connect @0.420s
+2026-11-07 21:42:59.143 Df Finplan[5869:5917] [com.apple.network:connection] nw_socket_handle_socket_event [C1.1.1.1:3] Socket received CONNECTED event
+2026-11-07 21:42:59.144 Df Finplan[5869:5917] [com.apple.network:connection] nw_flow_connected [C1.1.1.1 IPv4#18f31a41:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] Transport protocol connected (socket)
+2026-11-07 21:42:59.144 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1.1 IPv4#18f31a41:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] event: flow:finish_transport @0.455s
+2026-11-07 21:42:59.146 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_session_apply_protocol_options_for_transport_block_invoke(2170) [C1.1.1.1:2][0x102f1e750] TLS configured [min_version(0x0303) max_version(0x0304) name(redacted) tickets(false) false_start(false) enforce_ev(false) enforce_ats(false) ats_non_pfs_ciphersuite_allowed(false) ech(false) pqtls(false)]
+2026-11-07 21:42:59.147 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_context_info_handler(2355) [C1.1.1.1:2][0x102f1e750] Client handshake started
+2026-11-07 21:42:59.148 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_context_info_handler(2372) [C1.1.1.1:2][0x102f1e750] Client handshake state: TLS client enter_early_data
+2026-11-07 21:42:59.148 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_context_info_handler(2372) [C1.1.1.1:2][0x102f1e750] Client handshake state: TLS client read_server_hello
+2026-11-07 21:42:59.251 Df Finplan[5869:5912] [com.apple.runningboard:process] Starting death monitoring for handle [xpcservice<com.apple.WebKit.Networking([app<com.vershov.finplan((null))>:5869])>{vt hash: 114736818}[uuid:A219C59B-AB63-4528-9736-AF6BE16942BF]:5878]
+2026-11-07 21:42:59.266 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a002520 - GPUProcessProxy::didFinishLaunching:
+2026-11-07 21:42:59.266 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a002520 - GPUProcessProxy::connectionWillOpen:
+2026-11-07 21:42:59.266 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0025b0 - [PID=5877] ProcessThrottler::didConnectToProcess
+2026-11-07 21:42:59.266 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0025b0 - [PID=5877] ProcessThrottler::setThrottleState: Updating process assertion type to 3 (foregroundActivities=2, backgroundActivities=1)
+2026-11-07 21:42:59.267 Df Finplan[5869:5906] [com.apple.WebKit:Process] AssertionCapability::AssertionCapability: taking assertion Foreground
+2026-11-07 21:42:59.267 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a005320 - NetworkProcessProxy::sendXPCEndpointToProcess(0x11a002520) state = 1 has connection = 1 XPC endpoint message = 0x0
+2026-11-07 21:42:59.267 Df Finplan[5869:5912] [com.apple.extensionkit:launch] Created new process ExtensionProcess: bundleID: com.apple.WebKit.Networking instance ID: Optional([_EXExtensionInstanceIdentifier: A219C59B-AB63-4528-9736-AF6BE16942BF]) pid: 5878.
+2026-11-07 21:42:59.267 Df Finplan[5869:5917] [com.apple.WebKit:ProcessSuspension] 0x11a009bb0 - ProcessAssertion::acquireSync Trying to take RBS assertion 'GPUProcess Foreground Assertion' for process with PID=5877
+2026-11-07 21:42:59.268 A  Finplan[5869:590c] (CoreServicesInternal) CFURLCreateBookmarkData
+2026-11-07 21:42:59.268 Df Finplan[5869:5912] [com.apple.WebKit:Process] AssertionCapability::AssertionCapability: taking assertion Foreground
+2026-11-07 21:42:59.270 Df Finplan[5869:5917] [com.apple.WebKit:ProcessSuspension] 0x11a009bb0 - ProcessAssertion() Successfully granted capability
+2026-11-07 21:42:59.276 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x102f1e930] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-11-07 21:42:59.313 Df Finplan[5869:5917] [com.apple.network:connection] nw_socket_handle_socket_event [C1.1.1.2:3] Socket received CONNECTED event
+2026-11-07 21:42:59.313 Df Finplan[5869:5917] [com.apple.network:connection] nw_flow_connected [C1.1.1.2 IPv4#5ce0ea42:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] Transport protocol connected (socket)
+2026-11-07 21:42:59.313 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1.2 IPv4#5ce0ea42:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] event: flow:finish_transport @0.624s
+2026-11-07 21:42:59.323 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_session_apply_protocol_options_for_transport_block_invoke(2170) [C1.1.1.2:2][0x103929180] TLS configured [min_version(0x0303) max_version(0x0304) name(redacted) tickets(false) false_start(false) enforce_ev(false) enforce_ats(false) ats_non_pfs_ciphersuite_allowed(false) ech(false) pqtls(false)]
+2026-11-07 21:42:59.324 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_context_info_handler(2355) [C1.1.1.2:2][0x103929180] Client handshake started
+2026-11-07 21:42:59.324 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_context_info_handler(2372) [C1.1.1.2:2][0x103929180] Client handshake state: TLS client enter_early_data
+2026-11-07 21:42:59.324 Df Finplan[5869:5917] [com.apple.network:boringssl] boringssl_context_info_handler(2372) [C1.1.1.2:2][0x103929180] Client handshake state: TLS client read_server_hello
+2026-11-07 21:42:59.324 Df Finplan[5869:5917] [com.apple.network:connection] nw_socket_handle_socket_event [C1.1.1.1:3] Socket received CONNRESET event
+2026-11-07 21:42:59.329 Df Finplan[5869:5917] [com.apple.network:connection] nw_socket_handle_socket_event [C1.1.1.1:3] Socket received DISCONNECTED event
+2026-11-07 21:42:59.329 E  Finplan[5869:5917] [com.apple.network:connection] nw_socket_handle_socket_event [C1.1.1.1:3] Socket SO_ERROR [54: Connection reset by peer]
+2026-11-07 21:42:59.329 Df Finplan[5869:5917] [com.apple.network:boringssl] nw_protocol_boringssl_error(2010) [C1.1.1.1:2][0x102f1e750] Lower protocol stack error during TLS handshake. [54: Connection reset by peer]
+2026-11-07 21:42:59.329 E  Finplan[5869:5917] [com.apple.network:connection] nw_protocol_socket_set_no_wake_from_sleep [C1.1.1.1:3] setsockopt SO_NOWAKEFROMSLEEP failed [22: Invalid argument]
+2026-11-07 21:42:59.329 E  Finplan[5869:5917] [com.apple.network:] nw_protocol_socket_set_no_wake_from_sleep setsockopt SO_NOWAKEFROMSLEEP failed [22: Invalid argument]
+2026-11-07 21:42:59.336 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a001560 - [PID=5877, throttler=0x11a0025b0] ProcessThrottler::Activity::invalidate: Ending foreground activity / 'Process initialization'
+2026-11-07 21:42:59.347 E  Finplan[5869:5917] [com.apple.network:connection] nw_protocol_socket_reset_linger [C1.1.1.1:3] setsockopt SO_LINGER failed [22: Invalid argument]
+2026-11-07 21:42:59.347 E  Finplan[5869:5917] [com.apple.network:connection] nw_endpoint_flow_failed_with_error [C1.1.1.1 IPv4#18f31a41:443 in_progress socket-flow (satisfied (Path is satisfied), interface: en0)] already failing, returning
+2026-11-07 21:42:59.347 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1.1 IPv4#18f31a41:443 failed socket-flow (satisfied (Path is satisfied), interface: en0)] event: flow:failed_connect @0.657s, error Connection reset by peer
+2026-11-07 21:42:59.347 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1.1 Hostname#5f23c4d1:443 failed resolver (satisfied (Path is satisfied), interface: en0)] event: resolver:children_failed @0.658s
+2026-11-07 21:42:59.347 Df Finplan[5869:5917] [com.apple.network:connection] [C1.1 Hostname#5f23c4d1:443 failed transform (satisfied (Path is satisfied), interface: en0)] event: transform:children_failed @0.658s
+2026-11-07 21:42:59.348 E  Finplan[5869:5917] [com.apple.network:connection] nw_endpoint_flow_failed_with_error [C1.1.1.1 IPv4#18f31a41:443 cancelled socket-flow ((null))] already failing, returning
+2026-11-07 21:42:59.348 Df Finplan[5869:5917] [com.apple.network:connection] [C1 Hostname#5f23c4d1:443 failed parent-flow (satisfied (Path is satisfied), interface: en0)] event: flow:child_failed @0.659s
+2026-11-07 21:42:59.348 Df Finplan[5869:5917] [com.apple.network:connection] nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state failed error Connection reset by peer
+2026-11-07 21:42:59.348 E  Finplan[5869:5917] [com.apple.CFNetwork:Default] Connection 1: received failure notification
+2026-11-07 21:42:59.348 E  Finplan[5869:5917] [com.apple.CFNetwork:Default] Connection 1: received ECONNRESET with incomplete TLS handshake - generating errSSLClosedNoNotify
+2026-11-07 21:42:59.348 E  Finplan[5869:5917] [com.apple.CFNetwork:Default] Connection 1: failed to connect 3:-9816, reason -1
+2026-11-07 21:42:59.348 E  Finplan[5869:5917] [com.apple.CFNetwork:Default] Connection 1: encountered error(3:-9816)
+2026-11-07 21:42:59.348 Df Finplan[5869:5917] [com.apple.CFNetwork:Default] Connection 1: cleaning up
+2026-11-07 21:42:59.349 Df Finplan[5869:5917] [com.apple.CFNetwork:Summary] Connection 1: summary for unused connection {protocol="(null)", domain_lookup_duration_ms=0, connect_duration_ms=0, secure_connection_duration_ms=0, private_relay=false, idle_duration_ms=0}
+2026-11-07 21:42:59.349 Df Finplan[5869:5917] [com.apple.network:connection] [C1 9395253D-D13A-4926-9BB8-741D021AAEC3 Hostname#5f23c4d1:443 quic-connection, url: https://fin.vershov.com/api.php, definite, attribution: developer] cancel
+2026-11-07 21:42:59.349 Df Finplan[5869:5917] [com.apple.network:connection] [C1 Hostname#5f23c4d1:443 quic-connection, url: https://fin.vershov.com/api.php, definite, attribution: developer] cancelled
+2026-11-07 21:42:59.349 Df Finplan[5869:5917] [com.apple.network:connection] nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state cancelled error Connection reset by peer
+2026-11-07 21:42:59.349 Df Finplan[5869:5917] [com.apple.CFNetwork:Default] Task <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1> can retry(N) with reason(2) for error [3:-9816]
+2026-11-07 21:42:59.349 E  Finplan[5869:5917] [com.apple.CFNetwork:Default] Task <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1> HTTP load failed, 0/0 bytes (error code: -1200 [3:-9816])
+2026-11-07 21:42:59.351 Df Finplan[5869:5917] [com.apple.CFNetwork:Summary] Task <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1> summary for task failure {transaction_duration_ms=856, response_status=-1, connection=1, reused=1, reused_after_ms=0, request_start_ms=0, request_duration_ms=0, response_start_ms=0, response_duration_ms=0, request_bytes=0, request_throughput_kbps=0, response_bytes=0, response_throughput_kbps=0, cache_hit=false}
+2026-11-07 21:42:59.351 E  Finplan[5869:5912] [com.apple.CFNetwork:Default] Task <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1> finished with error [-1200] Error Domain=NSURLErrorDomain Code=-1200 "Произошла ошибка SSL. Безопасное подключение к серверу невозможно." UserInfo={NSErrorFailingURLStringKey=https://fin.vershov.com/api.php?a=ui_manifest, NSLocalizedRecoverySuggestion=Выполнить подключение к серверу?, _kCFStreamErrorDomainKey=3, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <5B27D5E9-88A2-4839-9274-CC3A069ADB32>.<1>"
+), NSLocalizedDescription=Произошла ошибка SSL. Безопасное подключение к серверу невозможно., NSErrorFailingURLKey=https://fin.vershov.com/api.php?a=ui_manifest, NSUnderlyingError=0x600000c32d00 {Error Domain=kCFErrorDomainCFNetwork Code=-1200 "(null)" UserInfo={_kCFStreamPropertySSLClientCertificateState=0, _kCFNetworkC
+2026-11-07 21:42:59.434 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a005320 - NetworkProcessProxy::didFinishLaunching
+2026-11-07 21:42:59.434 F  Finplan[5869:5906] [com.apple.WebKit:Process] Networking process (0x11a005320) took 1.004079 seconds to launch
+2026-11-07 21:42:59.434 A  Finplan[5869:5906] (libsystem_trace.dylib) Activity for state dumps
+2026-11-07 21:42:59.434 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0053b0 - [PID=5878] ProcessThrottler::didConnectToProcess
+2026-11-07 21:42:59.434 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0053b0 - [PID=5878] ProcessThrottler::setThrottleState: Updating process assertion type to 3 (foregroundActivities=2, backgroundActivities=2)
+2026-11-07 21:42:59.435 Df Finplan[5869:5906] [com.apple.WebKit:Process] AssertionCapability::AssertionCapability: taking assertion Foreground
+2026-11-07 21:42:59.435 Df Finplan[5869:5917] [com.apple.WebKit:ProcessSuspension] 0x11a009d30 - ProcessAssertion::acquireSync Trying to take RBS assertion 'NetworkProcess Foreground Assertion' for process with PID=5878
+2026-11-07 21:42:59.436 Df Finplan[5869:5917] [com.apple.WebKit:ProcessSuspension] 0x11a009d30 - ProcessAssertion() Successfully granted capability
+2026-11-07 21:42:59.437 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a005320 - NetworkProcessProxy::sendXPCEndpointToProcess(0x11a000e20) state = 1 has connection = 1 XPC endpoint message = 0x600003d083c0
+2026-11-07 21:42:59.437 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a005320 - NetworkProcessProxy::sendXPCEndpointToProcess(0x11a002520) state = 1 has connection = 1 XPC endpoint message = 0x600003d083c0
+2026-11-07 21:42:59.482 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a003f40 - [PID=5878, throttler=0x11a0053b0] ProcessThrottler::Activity::invalidate: Ending foreground activity / 'Process initialization'
+2026-11-07 21:42:59.509 Df Finplan[5869:5918] [com.apple.CFNetwork:Default] Garbage collection for alternative services
+2026-11-07 21:42:59.556 Df Finplan[5869:5918] [com.apple.xpc:connection] [0x10380b990] Re-initialization successful; calling out to event handler with XPC_ERROR_CONNECTION_INTERRUPTED
+2026-11-07 21:43:00.223 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=5875] WebPageProxy::decidePolicyForNavigationAction: frameID=16, isMainFrame=1, navigationID=18
+2026-11-07 21:43:00.234 A  Finplan[5869:590e] (CoreFoundation) Loading Preferences From User Session CFPrefsD
+2026-11-07 21:43:00.237 Df Finplan[5869:5918] [com.apple.xpc:connection] [0x600003d08690] activating connection: mach=true listener=false peer=false name=com.apple.Safari.SafeBrowsing.Service
+2026-11-07 21:43:00.257 Df Finplan[5869:5906] [com.apple.WebKit:AppSSO] 0x11a001b00 - SOAuthorizationCoordinator::tryAuthorize
+2026-11-07 21:43:00.271 A  Finplan[5869:5906] (AppSSO) canPerformAuthorizationWithURL
+2026-11-07 21:43:00.272 A  Finplan[5869:5906] (AppSSOCore) canPerformAuthorizationWithURL
+2026-11-07 21:43:00.274 A  Finplan[5869:5906] (AppSSOCore) canPerformAuthorizationWithURL
+2026-11-07 21:43:00.275 A  Finplan[5869:5906] (AppSSOCore) canPerformAuthorizationWithURL
+2026-11-07 21:43:00.279 Df Finplan[5869:5906] [com.apple.authkit:siwa] Should process URL called
+2026-11-07 21:43:00.286 Df Finplan[5869:5906] [com.apple.authkit:siwa] Fetching native takeover URLs
+2026-11-07 21:43:00.292 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x103807b40] activating connection: mach=true listener=false peer=false name=com.apple.ak.authorizationservices.xpc
+2026-11-07 21:43:00.372 Df Finplan[5869:5906] [com.apple.authkit:siwa] Native takeover URLs fetched
+2026-11-07 21:43:00.373 Df Finplan[5869:5906] [com.apple.authkit:siwa] URL shouldn't be processed
+2026-11-07 21:43:00.374 Df Finplan[5869:5906] [com.apple.AppSSO:SOConfigurationClient] -[SOConfigurationClient init]  on <SOConfigurationClient: 0x60000026ab80>
+2026-11-07 21:43:00.376 Df Finplan[5869:5906] [com.apple.xpc:connection] [0x102f0fdd0] activating connection: mach=true listener=false peer=false name=com.apple.AppSSO.service-xpc
+2026-11-07 21:43:00.377 Df Finplan[5869:5906] [com.apple.AppSSO:SOServiceConnection] <SOServiceConnection: 0x60000026ac20>: new XPC connection
+2026-11-07 21:43:00.378 Df Finplan[5869:5906] [com.apple.AppSSO:SOConfigurationClient] -[SOConfigurationClient _reloadConfig]  on <SOConfigurationClient: 0x60000026ab80>
+2026-11-07 21:43:00.378 Df Finplan[5869:5906] [com.apple.AppSSO:SOClient] -[SOClient configurationWithCompletion:]  on <SOClient: 0x600000005cd0>
+2026-11-07 21:43:01.529 Df Finplan[5869:5906] [com.apple.AppSSO:SOClient] configurationWithCompletion: success = YES, error = (null)
+2026-11-07 21:43:01.530 Df Finplan[5869:5906] [com.apple.WebKit:AppSSO] 0x11a001b00 - SOAuthorizationCoordinator::tryAuthorize: The requested URL is not registered for AppSSO handling. No further action needed.
+2026-11-07 21:43:01.531 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a002520 - GPUProcessProxy is taking a background assertion because a web process is requesting a connection
+2026-11-07 21:43:01.554 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a002520 - GPUProcessProxy::didCreateContextForVisibilityPropagation: webPageProxyID: 12, pagePID: 13, contextID: 635927844
+2026-11-07 21:43:01.555 Df Finplan[5869:5906] [com.apple.WebKit:Process] Created visibility propagation interaction <_UIVisibilityPropagationInteraction: 0x6000026149c0> for process with PID=5877
+2026-11-07 21:43:01.715 E  Finplan[5869:5906] [com.apple.WebKit:ResourceLoadStatistics] Failed to request storage access quirks from WebPrivacy.
+2026-11-07 21:43:01.715 E  Finplan[5869:5906] [com.apple.WebKit:ResourceLoadStatistics] Failed to request storage access user agent string quirks from WebPrivacy.
+2026-11-07 21:43:01.715 E  Finplan[5869:5906] [com.apple.WebKit:ResourceLoadStatistics] Failed to request query parameters from WebPrivacy.
+2026-11-07 21:43:03.114 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=5875] WebPageProxy::decidePolicyForNavigationAction: listener called: frameID=16, isMainFrame=1, navigationID=18, policyAction=0, safeBrowsingWarning=0, isAppBoundDomain=0, wasNavigationIntercepted=0
+2026-11-07 21:43:03.115 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=5875] WebPageProxy::receivedNavigationActionPolicyDecision: frameID=16, isMainFrame=1, navigationID=18, policyAction=0
+2026-11-07 21:43:03.117 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSwapping] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=5875] WebPageProxy::decidePolicyForNavigationAction: keep using process 5875 for navigation, reason=Process has not yet committed any provisional loads
+2026-11-07 21:43:03.117 Df Finplan[5869:5906] [com.apple.WebKit:Process] 0x11a000e20 - [PID=5875] WebProcessProxy::canTerminateAuxiliaryProcess: returns false (pageCount=1, provisionalPageCount=0, suspendedPageCount=0, m_isInProcessCache=0, m_shutdownPreventingScopeCounter=0)
+2026-11-07 21:43:03.122 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=5875] WebPageProxy::didStartProvisionalLoadForFrame: frameID=16, isMainFrame=1
+2026-11-07 21:43:03.122 Df Finplan[5869:5906] [com.apple.WebKit:Loading] 0x11a000e20 - [PID=5875] WebProcessProxy::didStartProvisionalLoadForMainFrame:
+2026-11-07 21:43:03.136 Df Finplan[5869:5906] [com.apple.WebKit:ResourceLoadStatistics] StorageAccessPromptQuirkController::didUpdateCachedListData: Loaded 1 storage access prompt(s) quirks from WebPrivacy.
+2026-11-07 21:43:03.514 E  Finplan[5869:5906] [com.apple.WebKit:Process] 0x10400fa18 - [pageProxyID=12, webPageID=13, PID=5875] WebPageProxy::didFailProvisionalLoadForFrame: frameID=16, isMainFrame=1, domain=NSURLErrorDomain, code=-1200, isMainFrame=1, willInternallyHandleFailure=0
+2026-11-07 21:43:03.514 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0015f0 - [PID=5875, throttler=0x11a000eb0] ProcessThrottler::Activity::invalidate: Ending foreground activity / 'Client navigation'
+2026-11-07 21:43:03.514 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0049b0 - NavigationState will release its process network assertion soon because the page load completed
+2026-11-07 21:43:06.516 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a0049b0 NavigationState is releasing background process assertion because a page load completed
+2026-11-07 21:43:06.516 Df Finplan[5869:5906] [com.apple.WebKit:ProcessSuspension] 0x11a003fa0 - [PID=5875, throttler=0x11a000eb0] ProcessThrottler::Activity::invalidate: Ending background activity / 'Page Load'
+2026-11-07 21:43:35.720 Df Finplan[5869:5906] [com.apple.runningboard:process] Hit the server for a process handle 93e46dd000016ed that resolved to: [app<com.vershov.finplan((null))>:5869]
+2026-11-07 21:43:35.721 Df Finplan[5869:5906] [com.apple.UIKit:AppLifecycle] sceneOfRecord: sceneID: sceneID:com.vershov.finplan-default  persistentID: 0FFEA714-9881-4A8A-A14B-2DE139EBCB0C
+2026-11-07 21:43:35.722 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Scene did update interface style to 2, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:43:35.791 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Not push traits update to screen for new style 2, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:43:35.800 Df Finplan[5869:5906] [com.apple.UIKit:InterfaceStyle] Push traits update to screen for new style 2, <UIWindowScene: 0x10391b9b0> (0FFEA714-9881-4A8A-A14B-2DE139EBCB0C)
+2026-11-07 21:43:36.442 Df Finplan[5869:5906] [com.apple.UIKit:EventEnvironment] Enqueuing clear events of window: <_UIWindowSceneUserInterfaceStyleAnimationSnapshotWindow: 0x10391f430>; contextId: 0xF0ABE5C5
+2026-11-07 21:43:36.444 Df Finplan[5869:5906] [com.apple.UIKit:EventEnvironment] Performing clear events of window: <_UIWindowSceneUserInterfaceStyleAnimationSnapshotWindow: 0x10391f430>; contextId: 0x0
