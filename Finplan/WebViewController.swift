@@ -72,14 +72,12 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         #endif
         splash.show(in: view)
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in self?.splash.hide() } // на всякий случай: заставка не висит вечно
-        // при каждом запуске: если человек уже входил на этом устройстве (паролем, ключом или сессия сохранилась)
-        if Settings.lockOn && (Keychain.hasCredentials || Settings.wasLoggedIn) { lock.show(in: view) }
+        // замок теперь на сайте: без кода или Face ID сервер не отдаёт данные. Здесь — только шторка над суммами в переключателе приложений
         reload()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if lock.isShown { lock.authenticate() }
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .default }
@@ -97,6 +95,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         var info: [String: Any] = ["platform": "ios", "version": appVersion, "faceid": Settings.lockOn, "faceidAsked": Settings.lockAsked, "biometry": Biometry.name]
         info["push"] = "unknown"
         info["sms"] = SMSKey.token != nil
+        info["bioTok"] = BioKey.token != nil
         info["intents"] = true
         #if targetEnvironment(macCatalyst)
         info["mac"] = true
@@ -110,18 +109,14 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     @objc private func didEnterBackground() {
         backgroundAt = Date()
         // прячем суммы в переключателе приложений
-        if Settings.lockOn && loggedIn && !lock.isShown { lock.show(in: view, coverOnly: true) }
+        if loggedIn && !lock.isShown { lock.show(in: view, coverOnly: true) }
     }
 
     @objc private func willEnterForeground() {
         let away = backgroundAt.map { Date().timeIntervalSince($0) } ?? 0
         backgroundAt = nil
-        if Settings.lockOn && loggedIn && away > Settings.relockAfter {
-            lock.show(in: view)
-            lock.authenticate()
-        } else {
-            lock.hide()
-        }
+        _ = away // через 15 с в фоне сайт сам закроется кодом (visibilitychange) и спросит Face ID через bioAsk
+        lock.hide()
         resumeSync()
         sendPushState()
     }
@@ -129,11 +124,11 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     private func unlocked() { resumeSync() }
 
     #if targetEnvironment(macCatalyst)
-    @objc private func macResign() { if backgroundAt == nil { backgroundAt = Date() } }
+    @objc private func macResign() { if backgroundAt == nil { backgroundAt = Date() }; if loggedIn && !lock.isShown { lock.show(in: view, coverOnly: true) } }
     @objc private func macActive() {
         let away = backgroundAt.map { Date().timeIntervalSince($0) } ?? 0
         backgroundAt = nil
-        if Settings.lockOn && loggedIn && away > Settings.relockAfter && !lock.isShown { lock.show(in: view); lock.authenticate() }
+        _ = away; lock.hide()
     }
     #endif
 
@@ -202,6 +197,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         case "logout":
             loggedIn = false; Settings.wasLoggedIn = false
             Keychain.clear()
+            BioKey.token = nil
             SharedStore.clear()
             lastSnap = nil
             WidgetCenter.shared.reloadAllTimelines()
@@ -215,6 +211,23 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             } else {
                 Settings.lockOn = false
             }
+        case "lockShown":
+            splash.hide()
+        case "bioAsk":
+            // Face ID / Touch ID → токен открытия из связки ключей → сайт отдаёт его серверу
+            guard let tok = BioKey.token else { js("window.finBio&&finBio(null)"); return }
+            Biometry.authenticate(reason: body["reason"] as? String ?? "Открыть Финплан") { [weak self] ok in
+                self?.js("window.finBio&&finBio(\(ok ? Self.jsString(tok) : "null"))")
+            }
+        case "bioSave":
+            guard let tok = body["token"] as? String else { return }
+            Biometry.authenticate(reason: "Открывать Финплан по \(Biometry.name)") { [weak self] ok in
+                if ok { BioKey.token = tok }
+                self?.js("window.finBioSaved&&finBioSaved(\(ok))")
+            }
+        case "bioClear":
+            BioKey.token = nil
+            js("window.finNativeInfo&&(finNativeInfo.bioTok=false)")
         case "open":
             if let s = body["url"] as? String, let u = URL(string: s) { UIApplication.shared.open(u) }
         case "smsToken":

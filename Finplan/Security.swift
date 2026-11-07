@@ -24,8 +24,29 @@ enum Biometry {
         let c = LAContext()
         c.localizedCancelTitle = "Отмена"
         var err: NSError?
-        guard c.canEvaluatePolicy(.deviceOwnerAuthentication, error: &err) else { DispatchQueue.main.async { done(true) }; return } // на телефоне нет ни кода, ни Face ID — не запираем
+        guard c.canEvaluatePolicy(.deviceOwnerAuthentication, error: &err) else { DispatchQueue.main.async { done(false) }; return } // нет ни кода телефона, ни Face ID — открываем только кодом Финплана
         c.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { ok, _ in DispatchQueue.main.async { done(ok) } }
+    }
+}
+
+/// Токен открытия: сервер выдаёт его после кода, iPhone хранит в связке ключей и отдаёт только после Face ID / Touch ID.
+enum BioKey {
+    private static let service = "com.vershov.finplan.bio"
+    static var token: String? {
+        get {
+            let q: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: service, kSecAttrAccount as String: "unlock",
+                                    kSecReturnData as String: true, kSecMatchLimit as String: kSecMatchLimitOne]
+            var out: CFTypeRef?
+            guard SecItemCopyMatching(q as CFDictionary, &out) == errSecSuccess, let d = out as? Data else { return nil }
+            return String(data: d, encoding: .utf8)
+        }
+        set {
+            SecItemDelete([kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: service] as CFDictionary)
+            guard let v = newValue else { return }
+            let q: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: service, kSecAttrAccount as String: "unlock",
+                                    kSecValueData as String: Data(v.utf8), kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly]
+            SecItemAdd(q as CFDictionary, nil)
+        }
     }
 }
 
