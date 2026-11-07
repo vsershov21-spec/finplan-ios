@@ -1,7 +1,7 @@
 #!/bin/bash
 # Новый релиз → расшифровать → проверить → переключить. Без нового релиза ничего не делает.
 set -euo pipefail
-REL=${REL:-https://github.com/vsershov21-spec/finplan-ios/releases/download/web-latest}
+REL=${REL:-https://raw.githubusercontent.com/vsershov21-spec/finplan-ios/web-dist}
 D=/opt/finplan; KEY=/etc/finplan/key.pem
 T=$(mktemp -d -p "$D/releases" .tmp-XXXX); trap 'rm -rf "$T"' EXIT
 curl -fsSL --retry 3 "$REL/VERSION" -o "$T/VERSION" || { echo "релиза нет"; exit 0; }
