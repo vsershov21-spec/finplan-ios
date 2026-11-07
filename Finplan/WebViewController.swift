@@ -65,9 +65,15 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        #if targetEnvironment(macCatalyst)
+        // на Маке окно не уходит «в фон», а теряет фокус: считаем время с этого момента
+        NotificationCenter.default.addObserver(self, selector: #selector(macResign), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(macActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        #endif
         splash.show(in: view)
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in self?.splash.hide() } // на всякий случай: заставка не висит вечно
-        if Settings.lockOn && Keychain.hasCredentials { lock.show(in: view) }
+        // при каждом запуске: если человек уже входил на этом устройстве (паролем, ключом или сессия сохранилась)
+        if Settings.lockOn && (Keychain.hasCredentials || Settings.wasLoggedIn) { lock.show(in: view) }
         reload()
     }
 
@@ -110,7 +116,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     @objc private func willEnterForeground() {
         let away = backgroundAt.map { Date().timeIntervalSince($0) } ?? 0
         backgroundAt = nil
-        if Settings.lockOn && loggedIn && away > 60 {
+        if Settings.lockOn && loggedIn && away > Settings.relockAfter {
             lock.show(in: view)
             lock.authenticate()
         } else {
@@ -121,6 +127,15 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     }
 
     private func unlocked() { resumeSync() }
+
+    #if targetEnvironment(macCatalyst)
+    @objc private func macResign() { if backgroundAt == nil { backgroundAt = Date() } }
+    @objc private func macActive() {
+        let away = backgroundAt.map { Date().timeIntervalSince($0) } ?? 0
+        backgroundAt = nil
+        if Settings.lockOn && loggedIn && away > Settings.relockAfter && !lock.isShown { lock.show(in: view); lock.authenticate() }
+    }
+    #endif
 
     func resumeSync() { js("window.finNativeResume && window.finNativeResume()") }
 
@@ -165,7 +180,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
                 WidgetCenter.shared.reloadAllTimelines()
             }
         case "ready":
-            loggedIn = true
+            loggedIn = true; Settings.wasLoggedIn = true
             splash.hide()
             if let t = pendingTarget {
                 pendingTarget = nil
@@ -176,16 +191,16 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             askPush()
         case "cred":
             if let l = body["login"] as? String, let p = body["password"] as? String { Keychain.save(login: l, password: p) }
-            loggedIn = true
+            loggedIn = true; Settings.wasLoggedIn = true
         case "credBad":
             Keychain.clear()
         case "loginShown":
             splash.hide()
-            loggedIn = false
+            loggedIn = false; Settings.wasLoggedIn = false
             lock.hide()
             autoLogin()
         case "logout":
-            loggedIn = false
+            loggedIn = false; Settings.wasLoggedIn = false
             Keychain.clear()
             SharedStore.clear()
             lastSnap = nil
@@ -366,6 +381,13 @@ enum Settings {
         get { UserDefaults.standard.bool(forKey: "lockAsked") }
         set { UserDefaults.standard.set(newValue, forKey: "lockAsked") }
     }
+    /// на этом устройстве уже входили: при запуске сразу закрываем суммы и спрашиваем Face ID / Touch ID
+    static var wasLoggedIn: Bool {
+        get { UserDefaults.standard.bool(forKey: "wasLoggedIn") }
+        set { UserDefaults.standard.set(newValue, forKey: "wasLoggedIn") }
+    }
+    /// сколько секунд вне приложения, чтобы снова спросить
+    static let relockAfter: TimeInterval = 15
 }
 
 /// Убираем панель над клавиатурой (стрелки и «Готово»): подменяем класс содержимого WKWebView на наследника без inputAccessoryView.

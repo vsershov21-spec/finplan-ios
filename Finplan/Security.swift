@@ -10,7 +10,13 @@ enum Biometry {
         switch c.biometryType {
         case .touchID: return "Touch ID"
         case .opticID: return "Optic ID"
-        default: return "Face ID"
+        case .faceID: return "Face ID"
+        default:
+            #if targetEnvironment(macCatalyst)
+            return "паролю Mac"
+            #else
+            return "коду iPhone"
+            #endif
         }
     }
 
@@ -72,16 +78,23 @@ final class LockView: UIView {
         logo.heightAnchor.constraint(equalToConstant: 80).isActive = true
         let title = UILabel()
         title.text = "Финплан"
-        title.font = .systemFont(ofSize: 22, weight: .bold)
+        title.font = .systemFont(ofSize: 24, weight: .bold)
+        let sub = UILabel()
+        sub.text = "Суммы скрыты, пока вы не подтвердите"
+        sub.font = .systemFont(ofSize: 15); sub.textColor = .secondaryLabel
         var cfg = UIButton.Configuration.filled()
         cfg.cornerStyle = .capsule
+        cfg.baseBackgroundColor = .label; cfg.baseForegroundColor = .systemBackground
+        cfg.image = UIImage(systemName: Biometry.name == "Touch ID" ? "touchid" : Biometry.name == "Face ID" ? "faceid" : "lock.fill")
+        cfg.imagePadding = 8
         cfg.title = "Открыть по \(Biometry.name)"
         cfg.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 22, bottom: 12, trailing: 22)
         button.configuration = cfg
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         stack.axis = .vertical; stack.alignment = .center; stack.spacing = 14
-        [logo, title, button].forEach { stack.addArrangedSubview($0) }
-        stack.setCustomSpacing(28, after: title)
+        [logo, title, sub, button].forEach { stack.addArrangedSubview($0) }
+        stack.setCustomSpacing(6, after: title)
+        stack.setCustomSpacing(28, after: sub)
         stack.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stack)
         NSLayoutConstraint.activate([
