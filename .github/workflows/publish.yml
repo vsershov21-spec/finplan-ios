@@ -1,0 +1,17 @@
+name: Финплан · выкладка на сервер
+on:
+  push:
+    branches: [web-dist]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view web-latest >/dev/null 2>&1 || gh release create web-latest --prerelease --target main --title "Финплан · сервер" --notes "Зашифрованный релиз сайта для VPS. Расшифровать может только сервер."
+          gh release upload web-latest finplan-web.bin --clobber
+          gh release upload web-latest VERSION --clobber
